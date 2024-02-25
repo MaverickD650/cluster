@@ -6,13 +6,12 @@ talosVersion: v1.6.4
 kubernetesVersion: v1.29.2
 
 clusterName: &cluster home-kubernetes
-endpoint: https://192.168.50.198:6443
+endpoint: https://192.168.50.199:6443
 clusterPodNets:
   - "172.16.0.0/16"
 clusterSvcNets:
   - "172.17.0.0/16"
 additionalApiServerCertSans: &sans
-  - "192.168.50.198"
   - 127.0.0.1 # KubePrism
 additionalMachineCertSans: *sans
 cniConfig:
@@ -34,8 +33,6 @@ nodes:
         routes:
           - network: 0.0.0.0/0
             gateway: "192.168.50.1"
-        vip:
-          ip: "192.168.50.198"
 
 patches:
   # Configure containerd
@@ -165,5 +162,3 @@ controlPlane:
               - os:admin
             allowedKubernetesNamespaces:
               - system-upgrade
-
-
