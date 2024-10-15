@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  - books-nfs-pvc.yaml
+  - docs-nfs-pvc.yaml
+  - media-nfs-pvc.yaml
+  - calibre/ks.yaml
+  - calibre-web/ks.yaml
+  - filebrowser/ks.yaml
+  - stash/ks.yaml
+  - stash-rm/ks.yaml
