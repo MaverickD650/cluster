@@ -36,7 +36,6 @@ spec:
           dns:
             enabled: true
             loadBalancerIP: ${BLOCKY_IP}
-            type: "LoadBalancer"
     # -- set the default DNS upstream servers
     # Primarily designed for inclusion in the TrueNAS SCALE GUI
     defaultUpstreams:
