@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - namespace.yaml
-  - calibre/ks.yaml
   - calibre-web/ks.yaml
   - filebrowser/ks.yaml
   - stash/ks.yaml
@@ -10,3 +9,4 @@ resources:
   - documents-nfs-pvc.yaml
   - library-nfs-pvc.yaml
   - mediacol-nfs-pvc.yaml
+  - calibre2/ks.yaml
