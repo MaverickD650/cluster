@@ -85,20 +85,20 @@ spec:
       stash2:
         enabled: true
         existingClaim: media-stash2-nfs-pvc
-        mountPath: "data/stash2"
+        mountPath: "/data/stash2"
       media:
         enabled: true
         existingClaim: media-nfs-pvc
-        mountPath: "data/media"
+        mountPath: "/data/media"
       books:
         enabled: true
         existingClaim: books-nfs-pvc
-        mountPath: "data/books"
+        mountPath: "/data/books"
       docsconsume:
         enabled: true
         existingClaim: docs-consume-nfs-pvc
-        mountPath: "data/docsc"
+        mountPath: "/data/docsc"
       docsstore:
         enabled: true
         existingClaim: docs-store-nfs-pvc
-        mountPath: "data/docss"
+        mountPath: "/data/docss"
