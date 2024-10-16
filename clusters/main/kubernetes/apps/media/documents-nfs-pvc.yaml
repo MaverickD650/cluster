@@ -1,17 +1,17 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: media-nfs
+  name: documents-nfs
 provisioner: nfs.csi.k8s.io
 volumeBindingMode: Immediate
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: media-nfs-pv
+  name: documents-consume-nfs-pv
   namespace: media
 spec:
-  storageClassName: media-nfs
+  storageClassName: documents-nfs
   capacity:
     storage: 1Mi
   accessModes:
@@ -19,7 +19,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: 192.168.50.118
-    path: "/mnt/media/mediashare"
+    path: "/mnt/media/filing/consume"
   mountOptions:
     - nfsvers=4
     - tcp
@@ -32,10 +32,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: media-nfs-pvc
+  name: documents-consume-nfs-pvc
   namespace: media
 spec:
-  storageClassName: media-nfs
+  storageClassName: documents-nfs
   accessModes:
   - ReadWriteMany
   resources:
@@ -45,10 +45,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: media-stash1-nfs-pv
+  name: documents-store-nfs-pv
   namespace: media
 spec:
-  storageClassName: media-stash1-nfs
+  storageClassName: documents-nfs
   capacity:
     storage: 1Mi
   accessModes:
@@ -56,7 +56,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: 192.168.50.118
-    path: "/mnt/media/stash/misc"
+    path: "/mnt/media/filing/store"
   mountOptions:
     - nfsvers=4
     - tcp
@@ -69,47 +69,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: media-stash1-nfs-pvc
+  name: documents-store-nfs-pvc
   namespace: media
 spec:
-  storageClassName: media-nfs
-  accessModes:
-  - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Mi
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: media-stash2-nfs-pv
-  namespace: media
-spec:
-  storageClassName: media-stash1-nfs
-  capacity:
-    storage: 1Mi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  nfs:
-    server: 192.168.50.118
-    path: "/mnt/media/stash-rm"
-  mountOptions:
-    - nfsvers=4
-    - tcp
-    - intr
-    - hard
-    - noatime
-    - nodiratime
-    - nolock
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: media-stash2-nfs-pvc
-  namespace: media
-spec:
-  storageClassName: media-nfs
+  storageClassName: documents-nfs
   accessModes:
   - ReadWriteMany
   resources:

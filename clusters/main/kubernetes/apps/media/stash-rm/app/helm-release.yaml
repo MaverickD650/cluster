@@ -120,5 +120,5 @@ spec:
               enabled: true                                        
       store:
         enabled: true
-        existingClaim: media-stash2-nfs-pvc
+        existingClaim: mediacol-stash2-nfs-pvc
         mountPath: "/store"

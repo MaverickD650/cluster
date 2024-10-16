@@ -10,3 +10,6 @@ resources:
   - filebrowser/ks.yaml
   - stash/ks.yaml
   - stash-rm/ks.yaml
+  - documents-nfs-pvc.yaml
+  - library-nfs-pvc.yaml
+  - mediacol-nfs-pvc.yaml

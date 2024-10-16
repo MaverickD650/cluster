@@ -77,28 +77,28 @@ spec:
       data:
         storageClass: longhorn
         enabled: true
-        mountPath: /data
+        mountPath: "/data"
       stash1:
         enabled: true
-        existingClaim: media-stash1-nfs-pvc
+        existingClaim: mediacol-stash1-nfs-pvc
         mountPath: "/data/stash1"
       stash2:
         enabled: true
-        existingClaim: media-stash2-nfs-pvc
+        existingClaim: mediacol-stash2-nfs-pvc
         mountPath: "/data/stash2"
       media:
         enabled: true
-        existingClaim: media-nfs-pvc
+        existingClaim: mediacol-nfs-pvc
         mountPath: "/data/media"
       books:
         enabled: true
-        existingClaim: books-nfs-pvc
+        existingClaim: library-nfs-pvc
         mountPath: "/data/books"
       docsconsume:
         enabled: true
-        existingClaim: docs-consume-nfs-pvc
+        existingClaim: documents-consume-nfs-pvc
         mountPath: "/data/docsc"
       docsstore:
         enabled: true
-        existingClaim: docs-store-nfs-pvc
+        existingClaim: documents-store-nfs-pvc
         mountPath: "/data/docss"

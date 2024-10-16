@@ -1,17 +1,17 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: books-nfs
+  name: library-nfs
 provisioner: nfs.csi.k8s.io
 volumeBindingMode: Immediate
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: books-nfs-pv
+  name: library-nfs-pv
   namespace: media
 spec:
-  storageClassName: books-nfs
+  storageClassName: library-nfs
   capacity:
     storage: 1Mi
   accessModes:
@@ -32,10 +32,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: books-nfs-pvc
+  name: library-nfs-pvc
   namespace: media
 spec:
-  storageClassName: books-nfs
+  storageClassName: library-nfs
   accessModes:
   - ReadWriteMany
   resources:
