@@ -44,6 +44,10 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+        tls:
+          - hosts:
+            - stash.${BASE_DOMAIN}
+            secretName: stash3-tls-0-1
     persistence:                              
       store:
         enabled: true
