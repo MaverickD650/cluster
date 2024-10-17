@@ -3,10 +3,10 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - calibre-web/ks.yaml
-  - filebrowser/ks.yaml
-  - stash/ks.yaml
-  - stash-rm/ks.yaml
+  - calibre2/ks.yaml
   - documents-nfs-pvc.yaml
   - library-nfs-pvc.yaml
   - mediacol-nfs-pvc.yaml
-  - calibre2/ks.yaml
+  - filebrowser2/ks.yaml
+  - stash3/ks.yaml
+  - stash4/ks.yaml

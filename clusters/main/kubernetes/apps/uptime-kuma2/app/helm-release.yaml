@@ -3,18 +3,19 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: filebrowser
-  namespace: media
+  name: uptime-kuma2
+  namespace: uptime-kuma
 spec:
   interval: 15m
   chart:
     spec:
-      chart: filebrowser
-      version: 11.3.1
+      chart: uptime-kuma
+      version: 12.2.0
       sourceRef:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
+      reconcileStrategy: Revision
       interval: 15m
   timeout: 20m
   maxHistory: 3
@@ -33,7 +34,7 @@ spec:
       s3:
         type: s3
         url: "${S3URL}"
-        bucket: "${S3PREFIX}-filebrowser"
+        bucket: "${S3PREFIX}-uptime2"
         accessKey: "${S3ID}"
         secretKey: "${S3KEY}"
         encrKey: "${S3KEY}"
@@ -47,7 +48,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflare
         hosts:
-          - host: files.${BASE_DOMAIN}
+          - host: uptime.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -63,42 +64,3 @@ spec:
             src:
               cacheCapacity: 10Gi
               enabled: true
-      database:
-        volsync:
-          - name: database
-            type: restic
-            credentials: s3
-            dest:
-              cacheCapacity: 10Gi
-              enabled: true
-            src:
-              cacheCapacity: 10Gi
-              enabled: true
-      data:
-        storageClass: longhorn
-        enabled: true
-        mountPath: "/data"
-      stash1:
-        enabled: true
-        existingClaim: mediacol-stash1-nfs-pvc
-        mountPath: "/data/stash1"
-      stash2:
-        enabled: true
-        existingClaim: mediacol-stash2-nfs-pvc
-        mountPath: "/data/stash2"
-      media:
-        enabled: true
-        existingClaim: mediacol-nfs-pvc
-        mountPath: "/data/media"
-      books:
-        enabled: true
-        existingClaim: library-nfs-pvc
-        mountPath: "/data/books"
-      docsconsume:
-        enabled: true
-        existingClaim: documents-consume-nfs-pvc
-        mountPath: "/data/docsc"
-      docsstore:
-        enabled: true
-        existingClaim: documents-store-nfs-pvc
-        mountPath: "/data/docss"

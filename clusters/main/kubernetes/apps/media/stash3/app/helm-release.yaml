@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: stash2
+  name: stash3
   namespace: media
 spec:
   interval: 15m
@@ -15,6 +15,7 @@ spec:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
+      reconcileStrategy: Revision
       interval: 15m
   timeout: 20m
   maxHistory: 3
@@ -33,7 +34,7 @@ spec:
       s3:
         type: s3
         url: "${S3URL}"
-        bucket: "${S3PREFIX}-stash2"
+        bucket: "${S3PREFIX}-stash3"
         accessKey: "${S3ID}"
         secretKey: "${S3KEY}"
         encrKey: "${S3KEY}"
@@ -47,7 +48,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflare
         hosts:
-          - host: stash2.${BASE_DOMAIN}
+          - host: stash.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -117,8 +118,8 @@ spec:
               enabled: true
             src:
               cacheCapacity: 10Gi
-              enabled: true                                        
+              enabled: true                                
       store:
         enabled: true
-        existingClaim: mediacol-stash2-nfs-pvc
+        existingClaim: mediacol-stash1-nfs-pvc
         mountPath: "/store"

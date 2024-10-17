@@ -1,11 +1,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: stash-rm
+  name: stash4
   namespace: flux-system
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/apps/media/stash-rm/app
+  path: clusters/main/kubernetes/apps/media/stash4/app
   prune: true
   sourceRef:
     kind: GitRepository
