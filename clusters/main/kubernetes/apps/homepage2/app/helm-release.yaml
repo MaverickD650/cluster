@@ -44,3 +44,21 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+    addons:
+      codeserver:
+        # -- Enable running a code-server container in the pod
+        enabled: true
+        ingress:
+          enabled: true
+          integrations:
+            traefik:
+              enabled: true
+            certManager:
+              enabled: true
+              certificateIssuer: cloudflared
+          hosts:
+            - host: homeedit.${BASE_DOMAIN}
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls: []
