@@ -30,14 +30,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    credentials:
-      s3:
-        type: s3
-        url: "${S3URL}"
-        bucket: "${S3PREFIX}-uptime2"
-        accessKey: "${S3ID}"
-        secretKey: "${S3KEY}"
-        encrKey: "${S3KEY}"
     ingress:
       main:
         enabled: true
@@ -52,15 +44,3 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-    persistence:
-      config:
-        volsync:
-          - name: config
-            type: restic
-            credentials: s3
-            dest:
-              cacheCapacity: 10Gi
-              enabled: true
-            src:
-              cacheCapacity: 10Gi
-              enabled: true
