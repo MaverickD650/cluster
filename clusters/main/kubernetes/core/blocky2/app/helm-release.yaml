@@ -32,13 +32,9 @@ spec:
   values:
     service:
       dns:
-        enabled: true
-        ports:
-          dns:
-            enabled: true
-            externalTrafficPolicy: Local
-            loadBalancerIP: ${BLOCKY_IP}
-            type: "LoadBalancer"
+        externalTrafficPolicy: Local
+        loadBalancerIP: ${BLOCKY_IP}
+        type: "LoadBalancer"
     # -- set the default DNS upstream servers
     # Primarily designed for inclusion in the TrueNAS SCALE GUI
     defaultUpstreams:
