@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: blocky
+  name: blocky2
   namespace: blocky
 spec:
   interval: 15m
