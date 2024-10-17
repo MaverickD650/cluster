@@ -37,6 +37,7 @@ spec:
           dns:
             enabled: true
             loadBalancerIP: ${BLOCKY_IP}
+            type: "LoadBalancer"
     # -- set the default DNS upstream servers
     # Primarily designed for inclusion in the TrueNAS SCALE GUI
     defaultUpstreams:
@@ -152,7 +153,7 @@ spec:
       s3:
         type: s3
         url: "${S3URL}"
-        bucket: "${S3PREFIX}-blocky"
+        bucket: "${S3PREFIX}-blocky2"
         accessKey: "${S3ID}"
         secretKey: "${S3KEY}"
         encrKey: "${S3KEY}"
