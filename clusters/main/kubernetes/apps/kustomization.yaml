@@ -4,5 +4,5 @@ resources:
   - kubernetes-dashboard/ks.yaml
   - media
   - metrics
-  - homepage/ks.yaml
   - uptime-kuma/ks.yaml
+  - homepage2/ks.yaml
