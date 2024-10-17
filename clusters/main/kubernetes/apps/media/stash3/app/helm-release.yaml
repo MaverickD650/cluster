@@ -38,16 +38,12 @@ spec:
             enabled: true
           certManager:
             enabled: true
-            certificateIssuer: cloudflare
+            certificateIssuer: cloudflared
         hosts:
           - host: stash.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
-        tls:
-          - hosts:
-            - stash.${BASE_DOMAIN}
-            secretName: stash3-tls-0-1
     persistence:                              
       store:
         enabled: true

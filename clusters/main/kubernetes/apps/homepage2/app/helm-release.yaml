@@ -38,7 +38,7 @@ spec:
             enabled: true
           certManager:
             enabled: true
-            certificateIssuer: cloudflare
+            certificateIssuer: cloudflared
         hosts:
           - host: home.${BASE_DOMAIN}
             paths:

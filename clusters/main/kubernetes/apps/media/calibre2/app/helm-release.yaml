@@ -45,7 +45,7 @@ spec:
             enabled: true
           certManager:
             enabled: true
-            certificateIssuer: cloudflare
+            certificateIssuer: cloudflared
         hosts:
           - host: calibre.${BASE_DOMAIN}
             paths:
