@@ -3,9 +3,6 @@ name: test
 on:
   workflow_dispatch:
   pull_request:
-  push:
-    branches: [ '*' ]
-    tags-ignore: [ '*' ]
 
 jobs:
   manifests:
@@ -19,5 +16,7 @@ jobs:
         uses: fluxcd/pkg/actions/kubeconform@main
       - name: Setup kustomize
         uses: fluxcd/pkg/actions/kustomize@main
+      - name: Set executable permissions
+        run: chmod +x ./scripts/validate.sh
       - name: Validate manifests
         run: ./scripts/validate.sh
