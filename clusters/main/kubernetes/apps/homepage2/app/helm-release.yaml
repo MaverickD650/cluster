@@ -44,6 +44,10 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+    persistence:
+      public:
+        enabled: true
+        mountPath: /app/public/images
     addons:
       codeserver:
         # -- Enable running a code-server container in the pod
