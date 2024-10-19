@@ -8,5 +8,3 @@ resources:
   - ./flux.yaml
   - ./upgradesettings.yaml
   - ./namespace.yaml
-  - alert.yaml
-  - provider.yaml
