@@ -61,20 +61,20 @@ spec:
         ldap:
           enabled: false
           token: ${AKldapauth}
-      ingress:
-        main:
-          enabled: true
-          integrations:
-            traefik:
-              enabled: true
-            certManager:
-              enabled: true
-              certificateIssuer: cloudflared
-          hosts:
-            - host: auth.${BASE_DOMAIN}
-              paths:
-                - path: /
-                  pathType: Prefix
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          traefik:
+            enabled: true
+          certManager:
+            enabled: true
+            certificateIssuer: cloudflared
+        hosts:
+          - host: auth.${BASE_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
       proxy:
         enabled: false
         primary: false
