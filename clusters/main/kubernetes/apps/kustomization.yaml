@@ -6,3 +6,4 @@ resources:
   - metrics
   - homepage2/ks.yaml
   - uptime-kuma2/ks.yaml
+  - mealie/ks.yaml
