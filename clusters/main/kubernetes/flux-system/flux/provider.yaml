@@ -6,6 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   type: discord
-  options:
-    webhookURL: "${discordwebhook}"  # Reference the placeholder for SOPS decryption
-    username: "Flux Notifications"
+  address: "${discordwebhook}"  # Reference the placeholder for SOPS decryption
+  username: "Flux Notifications"
