@@ -36,9 +36,9 @@ spec:
           containers:
             main:
               env:
-                LLDAP_LLDAP_USER_DN: "${LLUSERDN}"
-                LLDAP_LLDAP_USER_EMAIL: "${LLUSEREMAIL}"
-                LLDAP_LLDAP_USER_PASS: "${LLUSERPASS}"
+                LLDAP_LDAP_USER_DN: "${LLUSERDN}"
+                LLDAP_LDAP_USER_EMAIL: "${LLUSEREMAIL}"
+                LLDAP_LDAP_USER_PASS: "${LLUSERPASS}"
                 LLDAP_HTTP_URL: "${LLURL}"
                 LLDAP_LDAP_BASE_DN: "${LLBASEDN}"
     ingress:
