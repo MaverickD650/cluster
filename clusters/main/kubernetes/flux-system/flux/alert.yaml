@@ -1,0 +1,17 @@
+# alert.yaml
+apiVersion: notification.toolkit.fluxcd.io/v1alpha1
+kind: Alert
+metadata:
+  name: discord-alert
+  namespace: flux-system
+spec:
+  providerRef:
+    name: discord-provider  # The provider defined earlier
+  eventSeverity: info      # Notify only on errors (you can change to 'info', 'error', 'warning')
+  eventSources:
+    - kind: Kustomization   # Monitor Kustomizations
+      name: '*'             # Use '*' to monitor all Kustomizations in the namespace
+    - kind: HelmRelease     # Monitor HelmReleases
+      name: '*'             # Use '*' to monitor all HelmReleases in the namespace
+  summary: true              # Include a summary of the events in the notification
+  suspend: false             # Set to true to temporarily suspend the alert

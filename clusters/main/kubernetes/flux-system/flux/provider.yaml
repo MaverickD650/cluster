@@ -1,0 +1,11 @@
+# provider.yaml
+apiVersion: notification.toolkit.fluxcd.io/v1alpha1
+kind: Provider
+metadata:
+  name: discord-provider
+  namespace: flux-system
+spec:
+  type: discord
+  options:
+    webhookURL: "${discordwebhook}"  # Reference the placeholder for SOPS decryption
+    username: "Flux Notifications"
