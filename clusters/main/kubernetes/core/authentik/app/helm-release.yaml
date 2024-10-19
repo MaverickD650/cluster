@@ -51,6 +51,16 @@ spec:
       timeout: 10
       from: "${AKemailfrom}"
 
+    outposts:
+      proxy:
+        enabled: false
+        token: ${AKproxauth}
+      radius:
+        enabled: false
+        token: ${AKradauth}
+      ldap:
+        enabled: false
+        token: ${AKldapauth}
     ingress:
       main:
         enabled: true
