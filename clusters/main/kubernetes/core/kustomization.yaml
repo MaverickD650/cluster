@@ -8,3 +8,4 @@ resources:
   - clusterissuer/ks.yaml
   - blocky2/ks.yaml
   - lldap/ks.yaml
+  - authentik/ks.yaml

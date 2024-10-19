@@ -1,0 +1,71 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/refs/heads/main/helmrelease-helm-v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authentik
+  namespace: authentik
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: authentik
+      version: 27.8.0
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+      reconcileStrategy: Revision
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    authentik:
+    credentials:
+      # Only works on initial install
+      email: ${AKinitemail}
+      password: ${AKinitpassword}
+      # Optional, only set if you want to use it
+      bootstrapToken: ""
+    
+    general:
+      disableUpdateCheck: false
+
+    email:
+      host: "${AKemailhost}"
+      port: 587
+      username: ${AKemailuser}
+      password: ${AKemailpass}
+      useTLS: true
+      useSSL: false
+      timeout: 10
+      from: "${AKemailfrom}"
+
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          traefik:
+            enabled: true
+          certManager:
+            enabled: true
+            certificateIssuer: cloudflared
+        hosts:
+          - host: auth.${BASE_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+          - host: auth.${BASE_DOMAIN}
+            paths:
+              - path: /outpost.goauthentik.io
+                pathType: Prefix
