@@ -61,7 +61,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: monitor.${BASE_DOMAIN}
+          - host: monitor6.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
