@@ -1,4 +1,4 @@
-name: Lint Helm Releases
+name: Validate Helm Releases
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main  # Change this to your default branch
 
 jobs:
-  lint:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,10 +26,34 @@ jobs:
         with:
           version: v3.7.0  # Specify the Helm version you want to use
 
-      - name: Lint Helm Releases
+      - name: Validate Helm Releases with helm template
         run: |
           # Find all helm-release.yaml files in the clusters/main/kubernetes directory
           for file in $(find clusters/main/kubernetes -type f -name 'helm-release.yaml'); do
-            echo "Linting $file"
-            helm lint "$file"
+            echo "Validating $file"
+            
+            # Extract the chart and repository details from the HelmRelease file
+            chart_name=$(yq eval '.spec.chart.spec.chart' "$file")
+            repo_name=$(yq eval '.spec.chart.spec.sourceRef.name' "$file")
+            repo_kind=$(yq eval '.spec.chart.spec.sourceRef.kind' "$file")
+
+            # Check if the repo kind is HelmRepository
+            if [[ "$repo_kind" == "HelmRepository" ]]; then
+              # Extract the repository URL from the corresponding HelmRepository file
+              repo_file=$(find ./repositories/helm -type f -name "*$repo_name*.yaml")
+              
+              if [[ -z "$repo_file" ]]; then
+                echo "Error: HelmRepository '$repo_name' referenced in $file not found."
+                exit 1
+              fi
+
+              # Extract the URL of the HelmRepository
+              repo_url=$(yq eval '.spec.url' "$repo_file")
+
+              # Render the chart using helm template
+              helm repo add "$repo_name" "$repo_url" --force-update
+              helm template "$chart_name" "$repo_name" --values "$file" --output-dir ./output
+            else
+              echo "Warning: Unknown sourceRef kind '$repo_kind' in $file."
+            fi
           done
