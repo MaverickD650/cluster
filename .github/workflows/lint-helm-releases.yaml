@@ -3,10 +3,10 @@ name: Validate Helm Releases
 on:
   push:
     branches:
-      - main  # Change this to your default branch
+      - main
   pull_request:
     branches:
-      - main  # Change this to your default branch
+      - main
 
 jobs:
   validate:
@@ -16,15 +16,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: List repository files
+      - name: Set up kind
         run: |
-          echo "Listing files in the repository:"
-          ls -R
+          curl -sSL https://kind.sigs.k8s.io/quick-start.sh | bash
+
+      - name: Create a kind cluster with a specific Kubernetes version
+        run: |
+          kind create cluster --image kindest/node:v1.31.1
+
+      - name: Set up kubectl
+        run: |
+          echo "KUBECONFIG=$(kind get kubeconfig-path)" >> $GITHUB_ENV
 
       - name: Set up Helm
         uses: azure/setup-helm@v1
         with:
-          version: v3.7.0  # Specify the Helm version you want to use
+          version: v3.7.0
 
       - name: Validate Helm Releases with helm template
         run: |
@@ -37,6 +44,12 @@ jobs:
             repo_name=$(yq eval '.spec.chart.spec.sourceRef.name' "$file")
             repo_kind=$(yq eval '.spec.chart.spec.sourceRef.kind' "$file")
             chart_version=$(yq eval '.spec.chart.spec.version' "$file")  # Extract version if specified
+
+            # Set the chart version if the Kubernetes version is incompatible
+            if [[ "$(cat version.txt)" < "v1.21.0" ]]; then
+              echo "Current Kubernetes version is below v1.21.0. Using an older chart version."
+              chart_version="1.6.0"  # Set this to a compatible version for your cluster
+            fi
 
             # Check if the repo kind is HelmRepository
             if [[ "$repo_kind" == "HelmRepository" ]]; then
