@@ -5,7 +5,7 @@ name: "Flux Diff"
 on:
   pull_request:
     branches: ["main"]
-    paths: ["clusters/main/kubernetes/**"]
+    paths: ["clusters/**", "repositories/**"]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
@@ -20,7 +20,9 @@ jobs:
       pull-requests: write
     strategy:
       matrix:
-        paths: ["clusters/main/kubernetes"]
+        paths: 
+          - "clusters/main/kubernetes"
+          - "repositories"
         resources: ["helmrelease", "kustomization"]
     steps:
       - name: Generate Token
