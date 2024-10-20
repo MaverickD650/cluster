@@ -49,6 +49,7 @@ jobs:
 
               # Extract the URL of the HelmRepository
               repo_url=$(yq eval '.spec.url' "$repo_file")
+              echo "Using Helm repository URL: $repo_url"  # Debugging output
 
               # Render the chart using helm template
               helm repo add "$repo_name" "$repo_url" --force-update
