@@ -36,6 +36,13 @@ spec:
       disableGDM: true
       requireHTTPS: false
 
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                PLEX_CLAIM: "${PLEX_CLAIM}"    
     service:
       main:
         type: LoadBalancer
