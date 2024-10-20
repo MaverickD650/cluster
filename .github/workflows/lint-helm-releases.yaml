@@ -36,6 +36,7 @@ jobs:
             chart_name=$(yq eval '.spec.chart.spec.chart' "$file")
             repo_name=$(yq eval '.spec.chart.spec.sourceRef.name' "$file")
             repo_kind=$(yq eval '.spec.chart.spec.sourceRef.kind' "$file")
+            chart_version=$(yq eval '.spec.chart.spec.version' "$file")  # Extract version if specified
 
             # Check if the repo kind is HelmRepository
             if [[ "$repo_kind" == "HelmRepository" ]]; then
@@ -51,9 +52,26 @@ jobs:
               repo_url=$(yq eval '.spec.url' "$repo_file")
               echo "Using Helm repository URL: $repo_url"  # Debugging output
 
-              # Render the chart using helm template
+              # Add the Helm repository
+              echo "Adding Helm repository: $repo_name"
               helm repo add "$repo_name" "$repo_url" --force-update
-              helm template "$chart_name" "$repo_name" --values "$file" --output-dir ./output
+
+              # Check if the chart exists in the repository
+              echo "Checking for chart '$chart_name' in repository '$repo_name'"
+              if ! helm search repo "$repo_name/$chart_name" --versions; then
+                echo "Error: Chart '$chart_name' not found in repository '$repo_name'."
+                exit 1
+              fi
+
+              # Render the chart using helm template
+              chart_reference="$repo_name/$chart_name"
+              if [[ -n "$chart_version" ]]; then
+                echo "Running: helm template $chart_reference --version $chart_version --values $file"
+                helm template "$chart_reference" --version "$chart_version" --values "$file" --output-dir ./output
+              else
+                echo "Running: helm template $chart_reference --values $file"
+                helm template "$chart_reference" --values "$file" --output-dir ./output
+              fi
             else
               echo "Warning: Unknown sourceRef kind '$repo_kind' in $file."
             fi
