@@ -33,7 +33,7 @@ spec:
     plex:
       serverIP: ${PLEX_IP}
       additionalAdvertiseURL: "https://plex.${BASE_DOMAIN}, https://plex.${BASE_DOMAIN}:32400"
-      disableGDM: true
+      disableGDM: false
       requireHTTPS: false
 
     workload:
