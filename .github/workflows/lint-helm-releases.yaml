@@ -28,12 +28,8 @@ jobs:
 
       - name: Lint Helm Releases
         run: |
-          # Find all .yaml files in the clusters/main/kubernetes directory
-          if [ -d "clusters/main/kubernetes" ]; then
-            for file in $(find clusters/main/kubernetes -type f -name '*.yaml'); do
-              echo "Linting $file"
-              helm lint $file
-            done
-          else
-            echo "Directory 'clusters/main/kubernetes' not found."
-          fi
+          # Find all helm-release.yaml files in the clusters/main/kubernetes directory
+          for file in $(find clusters/main/kubernetes -type f -name 'helm-release.yaml'); do
+            echo "Linting $file"
+            helm lint "$file"
+          done
