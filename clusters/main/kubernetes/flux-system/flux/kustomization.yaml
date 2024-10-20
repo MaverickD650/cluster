@@ -8,3 +8,6 @@ resources:
   - ./flux.yaml
   - ./upgradesettings.yaml
   - ./namespace.yaml
+  - discord-webhook.secret.yaml
+  - provider.yaml
+  - alert.yaml

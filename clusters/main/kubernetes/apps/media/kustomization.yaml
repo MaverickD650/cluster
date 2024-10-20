@@ -10,3 +10,4 @@ resources:
   - filebrowser2/ks.yaml
   - stash3/ks.yaml
   - stash4/ks.yaml
+  - plex/ks.yaml
