@@ -86,7 +86,7 @@ spec:
     middlewares:
       forwardAuth:
         - name: auth
-          address: https://authentik-proxy.authentik.svc.cluster.local:10228/outpost.goauthentik.io/auth/traefik
+          address: https://authentik-http.authentik.svc.cluster.local:10230/outpost.goauthentik.io/auth/traefik
           authResponseHeaders:
               - X-authentik-username
               - X-authentik-groups
