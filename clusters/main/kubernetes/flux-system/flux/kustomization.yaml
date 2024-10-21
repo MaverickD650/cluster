@@ -11,3 +11,6 @@ resources:
   - discord-webhook.secret.yaml
   - provider.yaml
   - alert.yaml
+  - github-receiver.yaml
+  - github-webhook-token-secret.secret.yaml
+  - ingress-webhook.yaml
