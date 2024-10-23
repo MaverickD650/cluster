@@ -1,11 +1,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: blocky2
+  name: uptime-kuma
   namespace: flux-system
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/core/blocky2/app
+  path: clusters/main/kubernetes/apps/uptime-kuma/app
   prune: true
   sourceRef:
     kind: GitRepository

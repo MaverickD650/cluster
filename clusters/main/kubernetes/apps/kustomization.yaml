@@ -8,3 +8,5 @@ resources:
   - uptime-kuma2/ks.yaml
   - mealie/ks.yaml
   - external-service/ks.yaml
+  - homepage/ks.yaml
+  - uptime-kuma/ks.yaml
