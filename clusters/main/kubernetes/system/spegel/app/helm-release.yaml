@@ -23,8 +23,4 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
-  values:
-      service:
-        main:
-          type: '{{ if ne "${SPEGEL_IP}" "" }}LoadBalancer{{ else }}ClusterIP{{ end }}'
-          loadBalancerIP: ${SPEGEL_IP}
+  values: {}
