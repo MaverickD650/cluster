@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: stash4
+  name: stash2
   namespace: media
 spec:
   interval: 15m
@@ -44,8 +44,8 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-    persistence:                                      
+    persistence:                              
       store:
         enabled: true
-        existingClaim: mediacol-stash2-nfs-pvc
+        existingClaim: mediacol-stash1-nfs-pvc
         mountPath: "/store"

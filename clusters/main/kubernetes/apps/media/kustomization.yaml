@@ -7,7 +7,7 @@ resources:
   - documents-nfs-pvc.yaml
   - library-nfs-pvc.yaml
   - mediacol-nfs-pvc.yaml
-  - filebrowser2/ks.yaml
-  - stash3/ks.yaml
-  - stash4/ks.yaml
+  - filebrowser/ks.yaml
+  - stash/ks.yaml
+  - stash2/ks.yaml
   - plex/ks.yaml

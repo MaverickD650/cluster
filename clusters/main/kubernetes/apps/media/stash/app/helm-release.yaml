@@ -3,14 +3,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: filebrowser2
+  name: stash
   namespace: media
 spec:
   interval: 15m
   chart:
     spec:
-      chart: filebrowser
-      version: 11.3.1
+      chart: stash
+      version: 17.4.2
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -40,35 +40,12 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: files.${BASE_DOMAIN}
+          - host: stash.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
-    persistence:
-      data:
-        enabled: true
-        mountPath: "/data"
-      stash1:
-        enabled: true
-        existingClaim: mediacol-stash1-nfs-pvc
-        mountPath: "/data/stash1"
-      stash2:
+    persistence:                                      
+      store:
         enabled: true
         existingClaim: mediacol-stash2-nfs-pvc
-        mountPath: "/data/stash2"
-      media:
-        enabled: true
-        existingClaim: mediacol-nfs-pvc
-        mountPath: "/data/media"
-      books:
-        enabled: true
-        existingClaim: library-nfs-pvc
-        mountPath: "/data/books"
-      docsconsume:
-        enabled: true
-        existingClaim: documents-consume-nfs-pvc
-        mountPath: "/data/docsc"
-      docsstore:
-        enabled: true
-        existingClaim: documents-store-nfs-pvc
-        mountPath: "/data/docss"
+        mountPath: "/store"
