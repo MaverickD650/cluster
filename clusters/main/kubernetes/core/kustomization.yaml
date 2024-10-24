@@ -6,7 +6,6 @@ resources:
   - metallb-config/ks.yaml
   - traefik/ks.yaml
   - clusterissuer/ks.yaml
-  - blocky2/ks.yaml
   - lldap/ks.yaml
   - authentik/ks.yaml
   - blocky/ks.yaml
