@@ -48,27 +48,6 @@ spec:
       public:
         enabled: true
         mountPath: /app/public/images
-        volsync:
-          - name: config
-            type: restic
-            credentials: s3
-            dest:
-              cacheCapacity: 10Gi
-              enabled: true
-            src:
-              cacheCapacity: 10Gi
-              enabled: true
-      config:
-        volsync:
-          - name: config
-            type: restic
-            credentials: s3
-            dest:
-              cacheCapacity: 10Gi
-              enabled: true
-            src:
-              cacheCapacity: 10Gi
-              enabled: true
     addons:
       codeserver:
         # -- Enable running a code-server container in the pod
