@@ -8,4 +8,3 @@ resources:
   - mealie/ks.yaml
   - external-service/ks.yaml
   - homepage/ks.yaml
-  - uptime-kuma/ks.yaml
