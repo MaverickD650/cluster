@@ -70,7 +70,7 @@ spec:
       # -- Sets the block refreshPeriod
       refreshPeriod: 4h
       # -- Sets the block download timeout
-      downloadTimeout: 60s
+      downloadTimeout: 61s
       # -- Sets the block download attempt count
       downloadAttempts: 3
       # -- Sets the block download cooldown
