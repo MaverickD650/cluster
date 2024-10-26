@@ -52,17 +52,6 @@ spec:
               - path: /
                 pathType: Prefix
     persistence:
-      config:
-        volsync:
-          - name: config
-            type: restic
-            credentials: s3
-            dest:
-              cacheCapacity: 10Gi
-              enabled: true
-            src:
-              cacheCapacity: 10Gi
-              enabled: true
       store:
         enabled: true
         existingClaim: library-nfs-pvc
