@@ -62,11 +62,13 @@ spec:
               moverSecurityContext:
                 runAsUser: 0
                 runAsGroup: 0
+                fsGroup: 0
             src:
               enabled: true
               moverSecurityContext:
                 runAsUser: 0
                 runAsGroup: 0
+                fsGroup: 0
       store:
         enabled: true
         existingClaim: library-nfs-pvc
