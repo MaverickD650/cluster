@@ -52,6 +52,15 @@ spec:
               - path: /
                 pathType: Prefix
     persistence:
+      config:
+        volsync:
+          - name: config
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+            src:
+              enabled: true
       store:
         enabled: true
         existingClaim: library-nfs-pvc
