@@ -14,3 +14,4 @@ resources:
   - github-receiver.yaml
   - github-webhook-token-secret.secret.yaml
   - ingress-webhook.yaml
+  - sopssecret.secret.yaml

@@ -30,6 +30,14 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    credentials:
+      s3:
+        type: s3
+        url: "${S3URL}"
+        bucket: "${S3PREFIX}-stash2"
+        accessKey: "${S3ID}"
+        secretKey: "${S3KEY}"
+        encrKey: "${S3KEY}"
     ingress:
       main:
         enabled: true
@@ -45,6 +53,108 @@ spec:
               - path: /
                 pathType: Prefix
     persistence:                              
+      config:
+        volsync:
+          - name: config
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+            src:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+      cache:
+        volsync:
+          - name: cache
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+            src:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+      generated:
+        volsync:
+          - name: generated
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+            src:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+      metadata:
+        volsync:
+          - name: metadata
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+            src:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+      blobs:
+        volsync:
+          - name: blobs
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+            src:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+      data:
+        volsync:
+          - name: data
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0
+            src:
+              enabled: true
+              moverSecurityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                fsGroup: 0      
       store:
         enabled: true
         existingClaim: mediacol-stash1-nfs-pvc
