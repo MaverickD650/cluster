@@ -1,7 +1,8 @@
 name: Automerge and Approve
 
 on:
-  workflow_run: [pull_request]
+  workflow_run: 
+    workflows: ["GitGuardian iac scan", "label-sync", "labeler"]
     # If you want to filter based on a specific finisher workflow, add here
     # workflows: ["Pull Request: Validate"]  # Name of the main CI workflow
     types:
