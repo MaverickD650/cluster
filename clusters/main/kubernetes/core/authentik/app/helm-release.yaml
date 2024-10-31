@@ -157,11 +157,11 @@ spec:
               enabled: true
             src:
               enabled: true
-      cnpg:
-        main:
-          backups:
-            enabled: true
-            credentials: s3
-          recovery:
-            method: object_store
-            credentials: s3    
+    cnpg:
+      main:
+        backups:
+          enabled: true
+          credentials: s3
+        recovery:
+          method: object_store
+          credentials: s3    
