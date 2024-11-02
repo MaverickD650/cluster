@@ -1,0 +1,95 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/refs/heads/main/helmrelease-helm-v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: paperless-ngx
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: paperless-ngx
+      version: 9.10.4
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+      reconcileStrategy: Revision
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    credentials:
+      s3:
+        type: s3
+        url: "${S3URL}"
+        bucket: "${S3PREFIX}-paperless"
+        accessKey: "${S3ID}"
+        secretKey: "${S3KEY}"
+        encrKey: "${S3KEY}"
+    persistence:
+      data:
+        volsync:
+          - name: data
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+            src:
+              enabled: true
+      media:
+        enabled: true
+        existingClaim: documents-store-nfs-pvc
+        mountPath: "/data/docss"
+      consume:
+        enabled: true
+        existingClaim: documents-consume-nfs-pvc
+        mountPath: "/data/docsc"
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                PAPERLESS_URL: "${PSURL}"
+                PAPERLESS_WEBSERVER_WORKERS: 2
+                PAPERLESS_ADMIN_USER: "${PSADMINU}"
+                PAPERLESS_ADMIN_PASSWORD: "${PSADMINP}"
+                PAPERLESS_ADMIN_MAIL: "${PSADMINE}"
+                PAPERLESS_OCR_LANGUAGE: "eng"
+                PAPERLESS_OCR_LANGUAGES: "eng fra deu spa ita"
+                PAPERLESS_ENABLE_HTTP_REMOTE_USER: true
+                PAPERLESS_LOGOUT_REDIRECT_URL: "${PSLOURL}"
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          traefik:
+            enabled: true
+          certManager:
+            enabled: true
+            certificateIssuer: cloudflared
+        hosts:
+          - host: filing.${BASE_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+    cnpg:
+      main:
+        backups:
+          enabled: true
+          credentials: s3
+        recovery:
+          method: object_store
+          credentials: s3 

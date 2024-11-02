@@ -11,3 +11,4 @@ resources:
   - stash/ks.yaml
   - stash2/ks.yaml
   - plex/ks.yaml
+  - paperless-ngx/ks.yaml
