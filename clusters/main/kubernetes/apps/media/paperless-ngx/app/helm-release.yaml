@@ -77,9 +77,6 @@ spec:
         integrations:
           traefik:
             enabled: true
-            middlewares:
-              - name: auth
-                namespace: traefik
           certManager:
             enabled: true
             certificateIssuer: cloudflared
