@@ -51,11 +51,11 @@ spec:
       media:
         enabled: true
         existingClaim: documents-store-nfs-pvc
-        mountPath: "/data/docss"
+        mountPath: "/media"
       consume:
         enabled: true
         existingClaim: documents-consume-nfs-pvc
-        mountPath: "/data/docsc"
+        mountPath: "/consume"
     workload:
       main:
         podSpec:
