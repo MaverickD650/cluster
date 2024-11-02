@@ -10,4 +10,3 @@ resources:
   - authentik/ks.yaml
   - blocky/ks.yaml
   - cloudflared/ks.yaml
-  - tailscale/ks.yaml
