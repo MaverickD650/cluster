@@ -9,3 +9,4 @@ resources:
   - lldap/ks.yaml
   - authentik/ks.yaml
   - blocky/ks.yaml
+  - cloudflared/ks.yaml
