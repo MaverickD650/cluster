@@ -11,3 +11,4 @@ resources:
   - blocky/ks.yaml
   - cloudflared/ks.yaml
   - generic-device-plugin/ks.yaml
+  - tailscale/ks.yaml
