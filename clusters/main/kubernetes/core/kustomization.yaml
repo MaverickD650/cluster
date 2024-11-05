@@ -10,3 +10,4 @@ resources:
   - authentik/ks.yaml
   - blocky/ks.yaml
   - cloudflared/ks.yaml
+  - generic-device-plugin/ks.yaml
