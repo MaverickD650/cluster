@@ -33,7 +33,7 @@ spec:
   values:
     tailscale:
       authkey: ${TSAUTH}
-      routes: "{$TSROUTE}"
+      routes: "${TSROUTE}"
     resources:
       limits:
         truecharts.org/tun: 1
