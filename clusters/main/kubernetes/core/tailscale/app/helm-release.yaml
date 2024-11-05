@@ -36,4 +36,4 @@ spec:
       routes: "$TSROUTE"
     resources:
       limits:
-        kernel.org/tun: 1
+        truecharts.org/tun: 1
