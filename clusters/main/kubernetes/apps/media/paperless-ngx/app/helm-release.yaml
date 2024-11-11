@@ -92,4 +92,8 @@ spec:
           credentials: s3
         recovery:
           method: object_store
-          credentials: s3 
+          credentials: s3    
+    resources:
+      limits:
+        cpu: 5000m
+        memory: 10Gi
