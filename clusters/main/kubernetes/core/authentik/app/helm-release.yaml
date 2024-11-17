@@ -121,6 +121,8 @@ spec:
               enabled: true
             src:
               enabled: true
+              trigger:
+                schedule: "0 2 * * *"                
       templates:
         volsync:
           - name: templates
@@ -130,6 +132,8 @@ spec:
               enabled: true
             src:
               enabled: true
+              trigger:
+                schedule: "0 2 * * *"                   
       blueprints:
         volsync:
           - name: blueprints
@@ -139,6 +143,8 @@ spec:
               enabled: true
             src:
               enabled: true
+              trigger:
+                schedule: "0 2 * * *"                   
       certs:
         volsync:
           - name: certs
@@ -148,6 +154,8 @@ spec:
               enabled: true
             src:
               enabled: true
+              trigger:
+                schedule: "0 2 * * *"                   
       geoip:
         volsync:
           - name: geoip
@@ -157,6 +165,8 @@ spec:
               enabled: true
             src:
               enabled: true
+              trigger:
+                schedule: "0 2 * * *"                   
     cnpg:
       main:
         backups:

@@ -66,6 +66,8 @@ spec:
                 fsGroup: 0
             src:
               enabled: true
+              trigger:
+                schedule: "0 1 * * *"
               moverSecurityContext:
                 runAsUser: 0
                 runAsGroup: 0
@@ -85,6 +87,8 @@ spec:
                 fsGroup: 0
             src:
               enabled: true
+              trigger:
+                schedule: "0 1 * * *"
               moverSecurityContext:
                 runAsUser: 0
                 runAsGroup: 0
