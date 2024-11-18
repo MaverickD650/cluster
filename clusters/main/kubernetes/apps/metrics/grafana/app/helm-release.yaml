@@ -93,6 +93,8 @@ spec:
                 fsGroup: 0
     cnpg:
       main:
+        cluster:
+          singleNode: true
         backups:
           enabled: true
           credentials: s3
