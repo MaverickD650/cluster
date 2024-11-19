@@ -89,6 +89,8 @@ spec:
                 pathType: Prefix
     cnpg:
       main:
+        cluster:
+          singleNode: true
         backups:
           enabled: true
           credentials: s3
