@@ -55,3 +55,7 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+    cnpg:
+      main:
+        cluster:
+          singleNode: true

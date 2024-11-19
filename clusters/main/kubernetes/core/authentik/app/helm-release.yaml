@@ -169,6 +169,8 @@ spec:
                 schedule: "0 2 * * *"                   
     cnpg:
       main:
+        cluster:
+          singleNode: true         
         backups:
           enabled: true
           credentials: s3
