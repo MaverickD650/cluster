@@ -35,8 +35,6 @@ spec:
         externalTrafficPolicy: Local
         loadBalancerIP: ${BLOCKY_IP}
         type: LoadBalancer
-    # -- set the default DNS upstream servers
-    # Primarily designed for inclusion in the TrueNAS SCALE GUI
     defaultUpstreams:
       # Cloudflare
       - https://1.1.1.1/dns-query
@@ -45,13 +43,13 @@ spec:
     k8sgateway:
       # -- list of processed domains
       domains: 
-        - domain: "${BASE_DOMAIN}"
-      #   # -- Optional configuration option for DNS01 challenge that will redirect all acme
-      #   # challenge requests to external cloud domain (e.g. managed by cert-manager)
-      #   # See: https://cert-manager.io/docs/configuration/acme/dns01/
-          dnsChallenge:
-            enabled: false
-            domain: dns01.clouddns.com
+      - domain: "${BASE_DOMAIN}"
+        # -- Optional configuration option for DNS01 challenge that will redirect all acme
+        # challenge requests to external cloud domain (e.g. managed by cert-manager)
+        # See: https://cert-manager.io/docs/configuration/acme/dns01/
+        dnsChallenge:
+          enabled: false
+          domain: dns01.clouddns.com
       forward:
         enabled: false
         primary: tls://1.1.1.1
