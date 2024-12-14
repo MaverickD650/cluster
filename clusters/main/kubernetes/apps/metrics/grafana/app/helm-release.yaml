@@ -83,6 +83,23 @@ spec:
               enabled: true
             src:
               enabled: true
+    configmap:
+      dashboard-provider:
+        enabled: true
+        data:
+          provider.yaml: |-
+            apiVersion: 1
+            providers:
+              - name: sidecarProvider
+                orgId: 1
+                folder: ''
+                type: file
+                disableDeletion: false
+                allowUiUpdates: true
+                updateIntervalSeconds: 30
+                options:
+                  foldersFromFilesStructure: true
+                  path: /tmp/dashboards
     cnpg:
       main:
         cluster:
