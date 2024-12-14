@@ -34,96 +34,21 @@ spec:
       dns:
         externalTrafficPolicy: Local
         loadBalancerIP: ${BLOCKY_IP}
-        type: "LoadBalancer"
+        type: LoadBalancer
     # -- set the default DNS upstream servers
     # Primarily designed for inclusion in the TrueNAS SCALE GUI
     defaultUpstreams:
       # Cloudflare
       - https://1.1.1.1/dns-query
       - https://1.0.0.1/dns-query
-    # -- Setup caching
-    caching:
-      minTime: 15m
-      maxTime: 0
-      maxItemsCount: 0
-      prefetching: true
-      prefetchExpires: 12h
-      prefetchThreshold: 5
-      prefetchMaxItemsCount: 0
-      cacheTimeNegative: 30m
-    # -- set conditional settings
-    # Primarily designed for inclusion in the TrueNAS SCALE GUI
-    conditional:
-      rewrite: []
-      # - in: something.com
-      #   out: somethingelse.com
-      mapping: []
-      # - domain: something.com
-      #   dnsserver: 192.168.178.1
-    # -- set blocking settings using Lists
-    # Primarily designed for inclusion in the TrueNAS SCALE GUI
-    blocking:
-      # -- Sets the blocktype
-      blockType: nxDomain
-      # -- Sets the block ttl
-      blockTTL: 6h
-      # -- Sets the block refreshPeriod
-      refreshPeriod: 4h
-      # -- Sets the block download timeout
-      downloadTimeout: 61s
-      # -- Sets the block download attempt count
-      downloadAttempts: 3
-      # -- Sets the block download cooldown
-      downloadCooldown: 5s
-      # -- Set the start strategy (blocking | failOnError | fast)
-      startStrategy: fast
-      # -- Sets how many list-groups can be processed at the same time
-      processingConcurrency: 8
-      # --  Add blocky whitelists
-      # `default` name is reservered for TrueCharts included default whitelist
-      # example shows the structure, though name should be changed when used
-      whitelist:
-        - name: ads
-          lists:
-            - https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/optional-list.txt
-            - https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt
-            - https://raw.githubusercontent.com/rahilpathan/pihole-whitelist/main/1.LowWL.txt
-
-      # -- Blocky blacklists
-      # `default` name is reservered for TrueCharts included default blacklist
-      # example shows the structure, though name should be changed when used
-      blacklist:
-        - name: ads
-          lists:
-           - https://big.oisd.nl/domainswild
-
-      # -- Blocky clientGroupsBlock
-      clientGroupsBlock:
-        - name: default
-          groups:
-            - default
 
     k8sgateway:
-      enabled: true
-      # -- TTL for non-apex responses (in seconds)
-      ttl: 300
-      # -- Limit what kind of resources to watch, e.g. watchedResources: ["Ingress"]
-      watchedResources: []
-      # -- Service name of a secondary DNS server (should be `serviceName.namespace`)
-      secondary: ""
-      # -- Override the default `serviceName.namespace` domain apex
-      apex: ""
       # -- list of processed domains
       domains: 
-      # -- Delegated domain
-      # - domain: "example.com"
+        - domain: "${BASE_DOMAIN}"
       #   # -- Optional configuration option for DNS01 challenge that will redirect all acme
       #   # challenge requests to external cloud domain (e.g. managed by cert-manager)
       #   # See: https://cert-manager.io/docs/configuration/acme/dns01/
-      #   dnsChallenge:
-      #     enabled: false
-      #     domain: dns01.clouddns.com
-        - domain: "g5yss.uk"
           dnsChallenge:
             enabled: false
             domain: dns01.clouddns.com
@@ -134,21 +59,6 @@ spec:
         options:
           - name: tls_servername
             value: cloudflare-dns.com
-
-    ingress:
-      main:
-        enabled: true
-        integrations:
-          traefik:
-            enabled: true
-          certManager:
-            enabled: true
-            certificateIssuer: cloudflared
-        hosts:
-          - host: blocky.${BASE_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
 
     cnpg:
       main:
