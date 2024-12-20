@@ -16,6 +16,7 @@ spec:
         name: truecharts
         namespace: flux-system
       interval: 15m
+      reconcileStrategy: Revision
   timeout: 20m
   maxHistory: 3
   install:
@@ -29,6 +30,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    prometheus:
+      retention: 14d
     ingress:
       main:
         enabled: true
