@@ -30,12 +30,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    prometheus:
-      remoteWrite:
-      - url: ${PRURL}
-        basic_auth:
-          username: ${PRUNAME}
-          password: ${PRUPASS}
     ingress:
       main:
         enabled: true
