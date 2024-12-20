@@ -32,6 +32,13 @@ spec:
   values:
     config:
       nextauth_url: "${LKURL}"
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                NEXTAUTH_URL_INTERNAL: "http://linkwarden.linkwarden.svc.cluster.local:3000"
     credentials:
       s3:
         type: s3
