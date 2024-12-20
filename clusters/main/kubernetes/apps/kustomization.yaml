@@ -8,3 +8,4 @@ resources:
   - mealie/ks.yaml
   - external-service/ks.yaml
   - homepage/ks.yaml
+  - linkwarden/ks.yaml
