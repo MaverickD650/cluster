@@ -30,8 +30,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    prometheus:
-      retention: 14d
     ingress:
       main:
         enabled: true
