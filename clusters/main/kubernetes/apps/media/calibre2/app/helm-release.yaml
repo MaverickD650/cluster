@@ -3,14 +3,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: kavita
+  name: calibre2
   namespace: media
 spec:
   interval: 15m
   chart:
     spec:
-      chart: kavita
-      version: 11.2.3
+      chart: calibre
+      version: 16.10.2
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -33,7 +33,7 @@ spec:
       s3:
         type: s3
         url: "${S3URL}"
-        bucket: "${S3PREFIX}-kavita"
+        bucket: "${S3PREFIX}-calibre2"
         accessKey: "${S3ID}"
         secretKey: "${S3KEY}"
         encrKey: "${S3KEY}"
@@ -47,7 +47,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: kavita.${BASE_DOMAIN}
+          - host: calibre.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -69,7 +69,7 @@ spec:
                 runAsUser: 0
                 runAsGroup: 0
                 fsGroup: 0
-      books:
+      store:
         enabled: true
         existingClaim: library-nfs-pvc
-        mountPath: "/books"
+        mountPath: "/calibre"
