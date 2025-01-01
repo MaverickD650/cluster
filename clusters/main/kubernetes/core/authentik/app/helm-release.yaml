@@ -79,7 +79,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: auth.${BASE_DOMAIN}
+          - host: auth.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix
@@ -89,11 +89,11 @@ spec:
         targetSelector:
           proxy: https
         hosts:
-          - host: auth.${BASE_DOMAIN}
+          - host: auth.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix                    
-          - host: "*.${BASE_DOMAIN}"
+          - host: "*.${DOMAIN_0}"
             paths:
               - path: /outpost.goauthentik.io
                 pathType: Prefix

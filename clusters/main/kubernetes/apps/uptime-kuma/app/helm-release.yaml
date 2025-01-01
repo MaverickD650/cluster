@@ -51,7 +51,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: uptime.${BASE_DOMAIN}
+          - host: uptime.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix

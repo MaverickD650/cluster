@@ -47,7 +47,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: calibre.${BASE_DOMAIN}
+          - host: calibre.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix
