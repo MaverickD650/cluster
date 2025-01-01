@@ -43,9 +43,9 @@ spec:
             enabled: true
           certManager:
             enabled: true
-            certificateIssuer: cloudflare
+            certificateIssuer: cloudflared
         hosts:
-          - host: traefik.${BASE_DOMAIN}
+          - host: traefik.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix

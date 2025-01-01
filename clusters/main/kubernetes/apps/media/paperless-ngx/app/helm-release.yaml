@@ -83,7 +83,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: filing.${BASE_DOMAIN}
+          - host: filing.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix

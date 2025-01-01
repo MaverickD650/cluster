@@ -47,7 +47,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: library.${BASE_DOMAIN}
+          - host: library.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix

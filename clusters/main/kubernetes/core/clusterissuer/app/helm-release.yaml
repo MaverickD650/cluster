@@ -36,12 +36,12 @@ spec:
       ACME:
         - name: cloudflared
           # Used for both logging in to the DNS provider AND ACME registration
-          email: "${EMAIL}"
+          email: "${DOMAIN_0_EMAIL}"
           server: 'https://acme-v02.api.letsencrypt.org/directory'
           # Options: HTTP01, cloudflare, route53, akamai, digitalocean, rfc2136, acmedns
           type: "cloudflare"
           # for cloudflare
-          cfapitoken: "${CLOUDFLARE_TOKEN}"
+          cfapitoken: "${DOMAIN_0_CLOUDFLARE_TOKEN}"
 
     clusterCertificates:
       # Namespaces in which the certificates must be available
@@ -52,5 +52,5 @@ spec:
           enabled: true
           certificateIssuer: cloudflared
           hosts:
-            - ${BASE_DOMAIN}
-            - '*.${BASE_DOMAIN}'
+            - ${DOMAIN_0}
+            - '*.${DOMAIN_0}'
