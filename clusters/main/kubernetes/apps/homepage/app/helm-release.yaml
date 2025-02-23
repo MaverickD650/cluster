@@ -48,7 +48,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: home.${BASE_DOMAIN}
+          - host: home.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix
@@ -106,7 +106,7 @@ spec:
               enabled: true
               certificateIssuer: cloudflared
           hosts:
-            - host: homeedit.${BASE_DOMAIN}
+            - host: homeedit.${DOMAIN_0}
               paths:
                 - path: /
                   pathType: Prefix

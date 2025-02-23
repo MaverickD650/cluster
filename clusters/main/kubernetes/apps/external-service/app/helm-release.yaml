@@ -51,7 +51,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: storage.${BASE_DOMAIN}
+          - host: storage.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix
