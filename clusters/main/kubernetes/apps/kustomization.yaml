@@ -9,3 +9,4 @@ resources:
   - external-service/ks.yaml
   - homepage/ks.yaml
   - linkwarden/ks.yaml
+  - pi-external-service/ks.yaml
