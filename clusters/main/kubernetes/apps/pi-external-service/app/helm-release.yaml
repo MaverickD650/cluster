@@ -51,7 +51,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: pihole.${BASE_DOMAIN}
+          - host: pihole.${DOMAIN_0}
             paths:
-              - path: /
+              - path: /admin
                 pathType: Prefix
