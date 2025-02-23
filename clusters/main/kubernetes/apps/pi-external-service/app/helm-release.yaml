@@ -53,5 +53,5 @@ spec:
         hosts:
           - host: pihole.${DOMAIN_0}
             paths:
-              - path: /admin
+              - path: /
                 pathType: Prefix
