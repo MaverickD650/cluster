@@ -12,4 +12,3 @@ resources:
   - cloudflared/ks.yaml
   - generic-device-plugin/ks.yaml
   - tailscale/ks.yaml
-  - external-dns/ks.yaml
