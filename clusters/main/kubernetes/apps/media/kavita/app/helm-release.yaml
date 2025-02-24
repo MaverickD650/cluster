@@ -47,7 +47,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: kavita.${BASE_DOMAIN}
+          - host: kavita.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix

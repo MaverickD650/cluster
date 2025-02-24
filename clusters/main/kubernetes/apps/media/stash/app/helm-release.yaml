@@ -48,7 +48,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: stash.${BASE_DOMAIN}
+          - host: stash.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix

@@ -32,7 +32,7 @@ spec:
   values:
     plex:
       serverIP: ${PLEX_IP}
-      additionalAdvertiseURL: "https://plex.${BASE_DOMAIN}, https://plex.${BASE_DOMAIN}:32400"
+      additionalAdvertiseURL: "https://plex.${DOMAIN_0}, https://plex.${DOMAIN_0}:32400"
       disableGDM: false
       requireHTTPS: false
 
@@ -58,7 +58,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: plex.${BASE_DOMAIN}
+          - host: plex.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix
@@ -90,7 +90,7 @@ spec:
               enabled: true
               certificateIssuer: cloudflared
           hosts:
-            - host: plexedit.${BASE_DOMAIN}
+            - host: plexedit.${DOMAIN_0}
               paths:
                 - path: /
                   pathType: Prefix
