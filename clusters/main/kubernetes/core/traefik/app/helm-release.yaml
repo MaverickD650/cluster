@@ -37,13 +37,16 @@ spec:
         loadBalancerIP: ${TRAEFIK_IP}
     ingress:
       main:
-        enabled: false
+        enabled: true
         integrations:
           traefik:
             enabled: true
+            middlewares:
+              - name: traefik-dash
+                namespace: traefik
           certManager:
             enabled: true
-            certificateIssuer: cloudflare
+            certificateIssuer: cloudflared
         hosts:
           - host: traefik.${DOMAIN_0}
             paths:
@@ -68,3 +71,8 @@ spec:
           trustForwardHeader: true
           tls:
             insecureSkipVerify: true
+      redirectRegex:
+        - name: traefik-dash
+          regex: https://traefik\.${DOMAIN_0}/?$
+          replacement: https://traefik.${DOMAIN_0}/dashboard/#/
+          permanent: true
