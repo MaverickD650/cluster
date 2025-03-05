@@ -9,7 +9,6 @@ spec:
     name: discord
   eventSeverity: info
   eventSources:
-
     - kind: HelmRelease
       name: "*"
       namespace: snapshot-controller
