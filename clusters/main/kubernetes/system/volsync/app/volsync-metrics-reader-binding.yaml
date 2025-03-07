@@ -19,6 +19,9 @@ subjects:
   - kind: ServiceAccount
     name: prometheus-prometheus
     namespace: prometheus
+  - kind: ServiceAccount
+    name: default
+    namespace: prometheus
 roleRef:
   kind: ClusterRole
   name: volsync-metrics-reader
