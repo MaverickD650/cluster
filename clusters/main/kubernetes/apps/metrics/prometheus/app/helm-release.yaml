@@ -44,3 +44,17 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+    rbac:
+      volsync-metrics-reader:
+        enabled: true
+        namespace: prometheus
+        clusterWide: true
+        serviceAccounts:
+          - main
+        rules:
+          - apiGroups:
+              - rbac.authorization.k8s.io
+            resources:
+              - subjectaccessreviews
+            verbs:
+              - create
