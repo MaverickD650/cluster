@@ -22,6 +22,9 @@ subjects:
   - kind: ServiceAccount
     name: default
     namespace: prometheus
+  - kind: ServiceAccount
+    name: prometheus-operator-kps-operator
+    namespace: prometheus-operator
 roleRef:
   kind: ClusterRole
   name: volsync-metrics-reader
