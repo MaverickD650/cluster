@@ -42,6 +42,6 @@ spec:
           - port: metrics
             path: /metrics
             scheme: https
+            tlsConfig:
+              insecureSkipVerify: true
         targetSelector: metrics
-        tlsConfig:
-          insecureSkipVerify: true
