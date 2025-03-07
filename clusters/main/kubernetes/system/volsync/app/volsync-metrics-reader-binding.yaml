@@ -11,7 +11,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: volsync-metrics-reader-prometheus
+  name: volsync-metrics-reader
 subjects:
   - kind: ServiceAccount
     name: prometheus
