@@ -14,7 +14,7 @@ metadata:
   name: volsync-metrics-reader-prometheus
 subjects:
   - kind: ServiceAccount
-    name: prometheus-prometheus
+    name: prometheus
     namespace: prometheus
 roleRef:
   kind: ClusterRole
