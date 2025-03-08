@@ -16,7 +16,7 @@ spec:
     matchLabels:
       app: kustomize-controller
   podMetricsEndpoints:
-    - port: http-prom
+    - port: http-metrics
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.zinn.ca/monitoring.coreos.com/prometheusrule_v1.json
 apiVersion: monitoring.coreos.com/v1
@@ -35,7 +35,7 @@ spec:
     matchLabels:
       app: source-controller
   podMetricsEndpoints:
-    - port: http-prom
+    - port: http-metrics
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.zinn.ca/monitoring.coreos.com/prometheusrule_v1.json
 apiVersion: monitoring.coreos.com/v1
@@ -54,7 +54,7 @@ spec:
     matchLabels:
       app: helm-controller
   podMetricsEndpoints:
-    - port: http-prom
+    - port: http-metrics
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.zinn.ca/monitoring.coreos.com/prometheusrule_v1.json
 apiVersion: monitoring.coreos.com/v1
@@ -73,4 +73,4 @@ spec:
     matchLabels:
       app: notification-controller
   podMetricsEndpoints:
-    - port: http-prom
+    - port: http-metrics
