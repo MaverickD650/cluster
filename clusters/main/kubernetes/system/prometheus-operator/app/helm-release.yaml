@@ -63,4 +63,4 @@ spec:
           - hosts:
             - prom.${DOMAIN_0}
             secretName: prometheus-tls-0
-
+      portName: main
