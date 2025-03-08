@@ -9,7 +9,7 @@ resources:
   - longhorn/ks.yaml
   - metallb/ks.yaml
   - openebs/ks.yaml
-  - prometheus-operator/ks.yaml
+  - prometheus/ks.yaml
   - snapshot-controller/ks.yaml
   - traefik-crds/ks.yaml
   - volsync/ks.yaml
