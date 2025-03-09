@@ -77,10 +77,10 @@ spec:
             - name: Prometheus
               type: prometheus
               uid: prometheus
-              url: http://prometheus-operated.prometheus:{{ .Values.service.main.ports.main.port }}
+              url: http://prometheus-operated.prometheus:9090
               access: proxy
               isDefault: true
-              version: 3
+              version: 4
               jsonData:
                 httpMethod: POST
                 timeInterval: 30s
