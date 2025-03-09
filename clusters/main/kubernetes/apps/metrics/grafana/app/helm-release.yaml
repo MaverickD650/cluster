@@ -84,6 +84,27 @@ spec:
             src:
               enabled: true
     configmap:
+      grafana-datasource:
+        enabled: true
+        labels:
+          grafana_datasources: "1"
+        data:
+          datasource.yaml: |-
+            apiVersion: 1
+            datasources:
+            - name: Prometheus
+              type: prometheus
+              uid: prometheus
+              url: http://prometheus-operated.prometheus:{{ .Values.service.main.ports.main.port }}
+              access: proxy
+              isDefault: {{ .Values.grafana.datasource.default | default true }}
+              version: 3
+              jsonData:
+                httpMethod: {{ .Values.grafana.datasource.httpMethod | default "POST" }}
+                timeInterval: {{ .Values.grafana.datasource.scrapeInterval | default "30s" }}
+                {{- if .Values.grafana.datasource.timeout }}
+                timeout: {{ .Values.grafana.datasource.timeout }}
+                {{- end }}
       dashboard-provider:
         enabled: true
         data:
