@@ -29,4 +29,5 @@ resources:
   - topolvm.yaml
   - truecharts.yaml
   - weave-gitops.yaml
+  - grafana.yaml
 # more goes here!
