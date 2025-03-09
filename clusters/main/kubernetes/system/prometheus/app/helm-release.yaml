@@ -25,6 +25,28 @@ spec:
     remediation:
       retries: 3
   values:
+    configmap:
+      grafana-datasource:
+        enabled: "{{ if .Values.grafana.datasource.enabled }}true{{ else }}false{{ end }}"
+        labels:
+          grafana_datasources: "1"
+        data:
+          datasource.yaml: |-
+            apiVersion: 1
+            datasources:
+            - name: Prometheus
+              type: prometheus
+              uid: {{ .Values.grafana.datasource.uid | default "prometheus" }}
+              url: http://prometheus-operated.prometheus:{{ .Values.service.main.ports.main.port }}
+              access: proxy
+              isDefault: {{ .Values.grafana.datasource.default | default true }}
+              version: 2
+              jsonData:
+                httpMethod: {{ .Values.grafana.datasource.httpMethod | default "POST" }}
+                timeInterval: {{ .Values.grafana.datasource.scrapeInterval | default "30s" }}
+                {{- if .Values.grafana.datasource.timeout }}
+                timeout: {{ .Values.grafana.datasource.timeout }}
+                {{- end }}
     nameOverride: "prometheus"
     crds:
       enabled: true
