@@ -66,24 +66,6 @@ spec:
               - path: /
                 pathType: Prefix
     configmap:
-      grafana-datasource:
-        enabled: true
-        labels:
-          grafana_datasources: "1"
-        data:
-          datasource.yaml: |-
-            apiVersion: 1
-            datasources:
-            - name: Prometheus
-              type: prometheus
-              uid: prometheus
-              url: http://prometheus-operated.prometheus:9090
-              access: proxy
-              isDefault: true
-              version: 4
-              jsonData:
-                httpMethod: POST
-                timeInterval: 30s
       dashboard-provider:
         enabled: true
         data:
