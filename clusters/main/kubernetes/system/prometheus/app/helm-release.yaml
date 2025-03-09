@@ -45,7 +45,6 @@ spec:
     kubeDns:
       enabled: false
     prometheus:
-      serviceMonitorSelector: {}
       ingress:
         enabled: true
         annotations:
@@ -65,3 +64,6 @@ spec:
             - prom.${DOMAIN_0}
             secretName: prometheus-tls-0
       portName: main
+
+    prometheusSpec:
+      serviceMonitorSelectorNilUsesHelmValues: false
