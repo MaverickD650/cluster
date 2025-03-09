@@ -38,23 +38,35 @@ spec:
         url: ${PROMURL}
         auth:
           type: basic
-          username: ${PROMUSER}
-          password: ${PROMPASS}
+          usernameKey: externalservices-username
+          passwordKey: externalservices-password
+        secret:
+          create: false
+          name: "monitoring-secrets"
+          namespace: "alloy"
       - name: grafana-cloud-logs
         type: loki
         url: ${LOKIURL}
         auth:
           type: basic
-          username: ${LOKIUSER}
-          password: ${LOKIPASS}
+          usernameKey: loki-username
+          passwordKey: loki-password
+        secret:
+          create: false
+          name: "monitoring-secrets"
+          namespace: "alloy"
       - name: grafana-cloud-traces
         type: otlp
         url: ${TRACEURL}
         protocol: grpc
         auth:
           type: basic
-          username: ${TRACEUSER}
-          password: ${TRACEPASS}
+          usernameKey: traces-username
+          passwordKey: traces-password
+        secret:
+          create: false
+          name: "monitoring-secrets"
+          namespace: "alloy"
         metrics:
           enabled: false
         logs:
