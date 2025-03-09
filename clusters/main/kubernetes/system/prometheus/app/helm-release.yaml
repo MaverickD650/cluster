@@ -64,10 +64,9 @@ spec:
             - prom.${DOMAIN_0}
             secretName: prometheus-tls-0
       portName: main
-
-    prometheusSpec:
-      serviceMonitorSelectorNilUsesHelmValues: false
-      scrapeConfigSelectorNilUsesHelmValues: false
-      probeSelectorNilUsesHelmValues: false
-      podMonitorSelectorNilUsesHelmValues: false
-      ruleSelectorNilUsesHelmValues: false
+      prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
+        scrapeConfigSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        ruleSelectorNilUsesHelmValues: false
