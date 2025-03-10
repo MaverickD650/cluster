@@ -56,12 +56,7 @@ spec:
       enabled: false
     kubeProxy:
       enabled: false
-    kube-state-metrics:
-      enabled: true
-    nodeExporter:
-      enabled: true
     prometheus:
-      enabled: true
       ingress:
         enabled: true
         annotations:
