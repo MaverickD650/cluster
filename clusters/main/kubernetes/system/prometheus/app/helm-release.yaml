@@ -35,7 +35,7 @@ spec:
     prometheusOperator:
       enabled: true
       serviceMonitor:
-        selfMonitor: true
+        selfMonitor: false
     windowsMonitoring:
       enabled: false
     prometheus-windows-exporter:
@@ -57,6 +57,7 @@ spec:
     kubeProxy:
       enabled: false
     prometheus:
+      enabled: false
       ingress:
         enabled: true
         annotations:
