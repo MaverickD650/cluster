@@ -57,6 +57,24 @@ spec:
     kubeProxy:
       enabled: false
     prometheus:
+      ingress:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: cloudflared
+          cert-manager.io/private-key-rotation-policy: Always
+          traefik.frontend.passHostHeader: "false"
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
+          traefik.ingress.kubernetes.io/router.tls: "true"
+        hosts:
+          - prom.${DOMAIN_0}
+        paths:
+          - /
+        pathType: Prefix
+        tls:
+          - hosts:
+            - prom.${DOMAIN_0}
+            secretName: prometheus-tls-0
       portName: main
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
