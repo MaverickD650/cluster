@@ -35,6 +35,7 @@ spec:
       upgradeJob:
         enabled: true
         forceConflicts: true
+    cleanPrometheusOperatorObjectNames: true
     prometheusOperator:
       enabled: true
       serviceMonitor:
@@ -117,3 +118,12 @@ spec:
         ruleSelectorNilUsesHelmValues: false
         enableAdminAPI: true
         walCompression: true
+        enableFeatures:
+          - memory-snapshot-on-shutdown
+        retention: 7d
+        retentionSize: 50GB
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            memory: 2000Mi
