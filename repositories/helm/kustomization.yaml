@@ -30,4 +30,5 @@ resources:
   - truecharts.yaml
   - weave-gitops.yaml
   - grafana.yaml
+  - ingress-nginx.yaml
 # more goes here!
