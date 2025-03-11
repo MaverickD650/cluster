@@ -98,11 +98,12 @@ spec:
       codeserver:
         # -- Enable running a code-server container in the pod
         enabled: true
+        ingressClassName: external
         ingress:
           enabled: true
           integrations:
             traefik:
-              enabled: true
+              enabled: false
             certManager:
               enabled: true
               certificateIssuer: cloudflared
