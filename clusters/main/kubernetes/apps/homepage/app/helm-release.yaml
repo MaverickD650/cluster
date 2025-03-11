@@ -98,9 +98,9 @@ spec:
       codeserver:
         # -- Enable running a code-server container in the pod
         enabled: true
-        ingressClassName: external
         ingress:
           enabled: true
+          ingressClassName: external
           integrations:
             traefik:
               enabled: false
