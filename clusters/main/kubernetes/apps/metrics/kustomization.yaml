@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - grafana/ks.yaml
   - speedtest-exporter/ks.yaml
-  - alloy/ks.yaml
