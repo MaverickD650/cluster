@@ -94,6 +94,12 @@ spec:
       namespace: openebs
     - kind: HelmRelease
       name: "*"
+      namespace: nginx-external
+    - kind: HelmRelease
+      name: "*"
+      namespace: nginx-internal
+    - kind: HelmRelease
+      name: "*"
       namespace: pi-external-service
     - kind: HelmRelease
       name: "*"
