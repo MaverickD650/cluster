@@ -58,6 +58,10 @@ spec:
           - name: tls_servername
             value: cloudflare-dns.com
 
+    configmap:
+      dashboard:
+        enabled: false
+
     cnpg:
       main:
         cluster:
