@@ -12,4 +12,4 @@ resources:
   - cloudflared/ks.yaml
   - generic-device-plugin/ks.yaml
   - tailscale/ks.yaml
-  - traefik-test.yaml/ks.yaml
+  - traefik-test/ks.yaml
