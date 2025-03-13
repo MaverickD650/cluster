@@ -35,7 +35,7 @@ spec:
         enabled: true
         integrations:
           traefik:
-            enabled: true
+            enabled: false
           certManager:
             enabled: true
             certificateIssuer: cloudflared

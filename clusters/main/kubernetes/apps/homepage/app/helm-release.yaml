@@ -41,7 +41,6 @@ spec:
     ingress:
       main:
         enabled: true
-        # ingressClassName: traefik-test
         integrations:
           traefik:
             enabled: false
