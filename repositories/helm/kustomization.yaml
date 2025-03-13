@@ -31,4 +31,5 @@ resources:
   - weave-gitops.yaml
   - grafana.yaml
   - ingress-nginx.yaml
+  - traefik.yaml
 # more goes here!
