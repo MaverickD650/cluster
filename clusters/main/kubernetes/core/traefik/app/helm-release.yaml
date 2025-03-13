@@ -10,10 +10,10 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 30.4.3
+      version: 34.4.1
       sourceRef:
         kind: HelmRepository
-        name: truecharts
+        name: traefik
         namespace: flux-system
       interval: 15m
   timeout: 20m
@@ -31,50 +31,47 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    global:
-      stopAll: true
-    defaultCertificate: "cloudflared-wildcard"
+    deployment:
+      enabled: true
+      replicas: 2
     service:
-      tcp:
-        loadBalancerIP: ${TRAEFIK_IP}
-    ingress:
-      main:
+      enabled: true
+      type: LoadBalancer
+      annotations:
+        metallb.io/ip-allocated-from-pool: main
+        metallb.io/loadBalancerIPs: ${TRAEFIK_IP}
+      spec:
+        externalTrafficPolicy: Local
+    logs:
+      general:
+        level: INFO
+      access:
         enabled: true
-        integrations:
-          traefik:
-            enabled: true
-            middlewares:
-              - name: traefik-dash
-                namespace: traefik
-          certManager:
-            enabled: true
-            certificateIssuer: cloudflared
-        hosts:
-          - host: traefik.${DOMAIN_0}
-            paths:
-              - path: /
-                pathType: Prefix
-    middlewares:
-      forwardAuth:
-        - name: auth
-          address: http://authentik-http.authentik.svc.cluster.local:10230/outpost.goauthentik.io/auth/traefik
-          authResponseHeaders:
-              - X-authentik-username
-              - X-authentik-groups
-              - X-authentik-email
-              - X-authentik-name
-              - X-authentik-uid
-              - X-authentik-jwt
-              - X-authentik-meta-jwks
-              - X-authentik-meta-outpost
-              - X-authentik-meta-provider
-              - X-authentik-meta-app
-              - X-authentik-meta-version
-          trustForwardHeader: true
-          tls:
-            insecureSkipVerify: true
-      redirectRegex:
-        - name: traefik-dash
-          regex: https://traefik\.${DOMAIN_0}/?$
-          replacement: https://traefik.${DOMAIN_0}/dashboard/#/
-          permanent: true
+    ingressClass:
+      enabled: true
+      isDefaultClass: true
+    tlsOptions:
+      default:
+        minVersion: VersionTLS12
+        maxVersion: VersionTLS13
+        sniStrict: true
+    providers:
+      kubernetesCRD:
+        enabled: true
+        allowCrossNamespace: true
+        allowExternalNameServices: true
+    tlsStore:
+      default:
+        defaultCertificate:
+          secretName: "certificate-issuer-cloudflared-wildcard"
+    ports:
+      traefik:
+        expose:
+          default: true
+      web:
+        redirections:
+          port: websecure
+      websecure:
+        tls:
+          enabled: true
+          options: "default"
