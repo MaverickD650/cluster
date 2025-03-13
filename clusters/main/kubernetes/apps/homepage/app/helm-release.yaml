@@ -44,7 +44,7 @@ spec:
         # ingressClassName: traefik-test
         integrations:
           traefik:
-            enabled: true
+            enabled: false
           certManager:
             enabled: true
             certificateIssuer: cloudflared
