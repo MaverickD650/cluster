@@ -69,7 +69,7 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
-        matchRule: Host(`traefik.${DOMAIN_0}`)
+        matchRule: Host(`traefik.${DOMAIN_0}`) && (PathPrefix(`/api`)) || PathPrefix(`/dashboard`)
         entryPoints: ["websecure"]
         middlewares:
           - name: chain-basic
