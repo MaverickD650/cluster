@@ -6,8 +6,9 @@ metadata:
   annotations:
       cert-manager.io/cluster-issuer: cloudflared
       cert-manager.io/private-key-rotation-policy: Always
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: 'true'
 spec:
-  ingressClassName: traefik
   rules:
   - host: longhorn.${DOMAIN_0}
     http:
@@ -24,6 +25,6 @@ spec:
       - longhorn.${BASE_DOMAIN}
       secretName: longhorn-tls-0
 status:
-    loadBalancer:
-      ingress:
-      - ip: ${TRAEFIK_IP}
+  loadBalancer:
+    ingress:
+    - ip: ${TRAEFIK_IP}
