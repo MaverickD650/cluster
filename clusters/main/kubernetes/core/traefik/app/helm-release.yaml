@@ -58,9 +58,22 @@ spec:
       isDefaultClass: true
     tlsOptions:
       default:
+        sniStrict: false
         minVersion: VersionTLS12
-        maxVersion: VersionTLS13
-        sniStrict: true
+        curvePreferences:
+          - CurveP521
+          - CurveP384
+          - X25519
+        cipherSuites:
+          - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+          - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+          - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+          - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+          - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+          - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+          - TLS_AES_128_GCM_SHA256
+          - TLS_AES_256_GCM_SHA384
+          - TLS_CHACHA20_POLY1305_SHA256
     providers:
       kubernetesCRD:
         enabled: true
@@ -75,6 +88,7 @@ spec:
       default:
         defaultCertificate:
           secretName: "certificate-issuer-cloudflared-wildcard"
+
     ingressRoute:
       dashboard:
         enabled: true
