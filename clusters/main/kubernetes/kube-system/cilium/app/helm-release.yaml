@@ -73,11 +73,10 @@ spec:
       cni:
         exclusive: false
       envoy:
-        rollOutPods: true
+        rollOutPods: false
       gatewayAPI:
-        enabled: true
-        enableAlpn: true
-        xffNumTrustedHops: 1
+        enabled: false
+        enableAlpn: false
       l2announcements:
         enabled: true
       loadBalancer:
