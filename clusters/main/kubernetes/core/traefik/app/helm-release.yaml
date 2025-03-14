@@ -72,7 +72,9 @@ spec:
       dashboard:
         enabled: true
         matchRule: Host(`traefik.${DOMAIN_0}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
-        entryPoints: ["traefik"]
+        entryPoints: ["websecure"]
+        annotations:
+          kubernetes.io/ingress.class: 'traefik'
         middlewares:
           - name: chain-basic
     ports:
