@@ -36,6 +36,8 @@ spec:
     deployment:
       enabled: true
       replicas: 2
+    dashboard:
+      enabled: true
     service:
       enabled: true
       type: LoadBalancer
