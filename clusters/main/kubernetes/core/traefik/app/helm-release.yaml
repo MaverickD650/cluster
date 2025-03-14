@@ -31,6 +31,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    additionalArguments:
+      - "--entrypoints.websecure.http.middlewares=traefik-chain-basic@kubernetescrd"
     deployment:
       enabled: true
       replicas: 2
