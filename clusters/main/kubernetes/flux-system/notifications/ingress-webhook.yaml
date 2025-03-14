@@ -26,4 +26,4 @@ spec:
 status:
     loadBalancer:
       ingress:
-      - ip: ${NGINX_EXTERNAL_IP}
+      - ip: ${TRAEFIK_IP}
