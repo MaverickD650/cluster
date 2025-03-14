@@ -66,6 +66,13 @@ spec:
       default:
         defaultCertificate:
           secretName: "certificate-issuer-cloudflared-wildcard"
+    ingressRoute:
+      dashboard:
+        enabled: true
+        matchRule: Host(`traefik.{DOMAIN_0}`)
+        entryPoints: ["websecure"]
+        middlewares:
+          - name: traefik-chain-basic
     ports:
       traefik:
         expose:
