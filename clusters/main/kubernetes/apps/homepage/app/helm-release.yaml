@@ -99,7 +99,6 @@ spec:
         enabled: true
         ingress:
           enabled: true
-          ingressClassName: external
           integrations:
             traefik:
               enabled: false
