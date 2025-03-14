@@ -33,6 +33,7 @@ spec:
   values:
     additionalArguments:
       - "--entrypoints.websecure.http.middlewares=traefik-chain-basic@kubernetescrd"
+      - "--providers.kubernetesingress.allowexternalnameservices=true"
     deployment:
       enabled: true
       replicas: 2
@@ -64,6 +65,11 @@ spec:
         enabled: true
         allowCrossNamespace: true
         allowExternalNameServices: true
+      kubernetesIngress:
+        enabled: true
+        namespaces: []
+        publishedService:
+          enabled: true
     tlsStore:
       default:
         defaultCertificate:
