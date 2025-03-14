@@ -69,10 +69,10 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
-        matchRule: Host(`traefik.{DOMAIN_0}`)
+        matchRule: Host(`traefik.${DOMAIN_0}`)
         entryPoints: ["websecure"]
         middlewares:
-          - name: traefik-chain-basic
+          - name: chain-basic
     ports:
       traefik:
         expose:
