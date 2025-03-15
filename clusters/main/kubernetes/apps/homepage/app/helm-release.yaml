@@ -43,7 +43,9 @@ spec:
         enabled: true
         integrations:
           traefik:
-            enabled: false
+            enabled: true
+            entrypoints:
+            - websecure
           certManager:
             enabled: true
             certificateIssuer: cloudflared
