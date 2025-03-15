@@ -52,6 +52,8 @@ spec:
             middlewares:
               - name: pi-redirect
                 namespace: traefik
+              - name: pi-prefix
+                namespace: traefik
           certManager:
             enabled: true
             certificateIssuer: cloudflared
