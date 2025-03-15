@@ -32,7 +32,6 @@ spec:
     keepHistory: false
   values:
     additionalArguments:
-      - "--entrypoints.websecure.http.middlewares=traefik-chain-basic@kubernetescrd"
       - "--providers.kubernetesingress.allowexternalnameservices=true"
       - "--serverstransport.insecureskipverify=true"
     deployment:
