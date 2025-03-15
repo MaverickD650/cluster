@@ -49,6 +49,9 @@ spec:
             enabled: true
             entrypoints:
             - websecure
+            middlewares:
+              - name: pi-redirect
+                namespace: traefik
           certManager:
             enabled: true
             certificateIssuer: cloudflared
