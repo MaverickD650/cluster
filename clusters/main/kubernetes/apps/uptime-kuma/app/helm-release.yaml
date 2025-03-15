@@ -43,7 +43,7 @@ spec:
         enabled: true
         integrations:
           traefik:
-            enabled: false
+            enabled: true
             middlewares:
               - name: auth
                 namespace: traefik
@@ -55,6 +55,30 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+    ingressMiddlewares:
+      traefik:
+        auth:
+          enabled: true
+          type: forward-auth
+          data:
+            address: http://authentik-http.authentik.svc.cluster.local:10230/outpost.goauthentik.io/auth/traefik
+            authResponseHeadersRegex: ''
+            trustForwardHeader: true
+            authResponseHeaders:
+              - X-authentik-username
+              - X-authentik-groups
+              - X-authentik-email
+              - X-authentik-name
+              - X-authentik-uid
+              - X-authentik-jwt
+              - X-authentik-meta-jwks
+              - X-authentik-meta-outpost
+              - X-authentik-meta-provider
+              - X-authentik-meta-app
+              - X-authentik-meta-version
+            authRequestHeaders:  []
+            tls:
+              insecureSkipVerify: true
     persistence:
       config:
         volsync:
