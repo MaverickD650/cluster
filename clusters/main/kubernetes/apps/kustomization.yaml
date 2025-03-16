@@ -6,7 +6,5 @@ resources:
   - metrics
   - uptime-kuma/ks.yaml
   - mealie/ks.yaml
-  - external-service/ks.yaml
   - homepage/ks.yaml
   - linkwarden/ks.yaml
-  - pi-external-service/ks.yaml
