@@ -33,12 +33,12 @@ spec:
     service:
       main:
         type: ExternalIP
-        externalIP: "${truenasip}"
+        externalIP: "${HAOSIP}"
         useSlice: false
         ports:
           main:
-            protocol: https
-            port: 443
+            protocol: http
+            port: 8123
             # Target port is the port of the "external service"
             # Defaults to "port" if not set
     ingress:
@@ -53,7 +53,7 @@ spec:
             enabled: true
             certificateIssuer: cloudflared
         hosts:
-          - host: storage.${DOMAIN_0}
+          - host: ha.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix
