@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - grafana/ks.yaml
   - speedtest-exporter/ks.yaml
+  - truenas-exporter/ks.yaml
