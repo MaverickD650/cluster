@@ -13,3 +13,4 @@ sopssecret.yaml
 .DS_Store
 clusters/main/talos/patches/all.yaml
 clusters/main/talos/patches/controlplane.yaml
+sops-modify.sh
