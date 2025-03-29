@@ -10,18 +10,6 @@ spec:
   eventSeverity: info
   eventSources:
     - kind: HelmRelease
-      name: "*"
-      namespace: snapshot-controller
-    - kind: HelmRelease
-      name: "*"
-      namespace: spegel
-    - kind: HelmRelease
-      name: "*"
-      namespace: system
-    - kind: HelmRelease
-      name: "*"
-      namespace: volsync
-    - kind: HelmRelease
       name: '*'
     - kind: HelmRelease
       name: "*"
@@ -52,7 +40,13 @@ spec:
       namespace: flux-system
     - kind: HelmRelease
       name: "*"
+      namespace: freshrss
+    - kind: HelmRelease
+      name: "*"
       namespace: generic-device-plugin
+    - kind: HelmRelease
+      name: "*"
+      namespace: grafana
     - kind: HelmRelease
       name: "*"
       namespace: homepage
@@ -94,12 +88,6 @@ spec:
       namespace: openebs
     - kind: HelmRelease
       name: "*"
-      namespace: nginx-external
-    - kind: HelmRelease
-      name: "*"
-      namespace: nginx-internal
-    - kind: HelmRelease
-      name: "*"
       namespace: pi-external-service
     - kind: HelmRelease
       name: "*"
@@ -130,12 +118,13 @@ spec:
       namespace: traefik
     - kind: HelmRelease
       name: "*"
+      namespace: truenas-exporter
+    - kind: HelmRelease
+      name: "*"
       namespace: uptime-kuma
     - kind: HelmRelease
       name: "*"
       namespace: volsync
-    - kind: HelmRelease
-      name: "*"
 ---
 # yaml-language-server: $schema=https://github.com/fluxcd-community/flux2-schemas/raw/main/alert-notification-v1beta3.json
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
