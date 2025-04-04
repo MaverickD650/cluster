@@ -32,4 +32,5 @@ resources:
   - grafana.yaml
   - ingress-nginx.yaml
   - traefik.yaml
+  - home-ops-mirror.yaml
 # more goes here!
