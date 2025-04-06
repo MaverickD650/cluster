@@ -4,7 +4,7 @@ clusterconfig
 patches/sopssecret.yaml
 patches/all.yaml
 all.yaml
-patches/manifests.yaml
+patches/custom.yaml
 cluster/main/kubernetes/**/bootstrap-values.yaml.ct
 ^clustertool.exe
 ^clustertool*

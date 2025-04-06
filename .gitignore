@@ -5,6 +5,7 @@ patches/sopssecret.yaml
 *patches/sopssecret.yaml
 *patches/all.yaml
 patches/all.yaml
+patches/custom.yaml
 clustertool.exe
 kubeconfig
 *kubeconfig
