@@ -12,7 +12,6 @@ resources:
   - descheduler.yaml
   - intel.yaml
   - jetstack.yaml
-  - kubernetes-sigs-metrics-server.yaml
   - kustomization.yaml
   - longhorn.yaml
   - metallb.yaml
@@ -25,7 +24,6 @@ resources:
   - prometheus-community.yaml
   - spegel.yaml
   - stakater.yaml
-  - topolvm.yaml
   - truecharts.yaml
   - weave-gitops.yaml
   - grafana.yaml
