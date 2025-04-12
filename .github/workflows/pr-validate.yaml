@@ -43,8 +43,6 @@ jobs:
             test
             --all-namespaces
             --path ./clusters/main/kubernetes
-            --no-validate-values
-            --enable-helm
       - name: Cleanup injected repositories
         if: always()
         run: rm -rf ./clusters/main/kubernetes/flux-system/repositories
