@@ -52,9 +52,6 @@ jobs:
       pull-requests: write
     strategy:
       matrix:
-        paths: 
-          - clusters/main/kubernetes
-          - repositories
         resources: ["helmrelease", "kustomization"]
     steps:
       - name: Checkout
@@ -72,8 +69,10 @@ jobs:
           args: >-
             diff ${{ matrix.resources }}
             --unified 6
-            --path /github/workspace/pull/${{ matrix.paths }}
-            --path-orig /github/workspace/default/${{ matrix.paths }}
+            --path /github/workspace/pull/clusters/main/kubernetes
+            --path /github/workspace/pull/repositories
+            --path-orig /github/workspace/default/clusters/main/kubernetes
+            --path-orig /github/workspace/default/repositories
             --strip-attrs "helm.sh/chart,checksum/config,app.kubernetes.io/version,chart"
             --limit-bytes 10000
             --all-namespaces
