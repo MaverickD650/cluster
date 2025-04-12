@@ -39,7 +39,7 @@ jobs:
             --enable-helm
             --verbose
             --sources flux-system
-            --log-level=DEBUG
+            --log-level DEBUG
 
   flux-diff:
     name: Flux Diff
