@@ -9,3 +9,4 @@ resources:
   - homepage/ks.yaml
   - linkwarden/ks.yaml
   - freshrss/ks.yaml
+  - snippet-box/ks.yaml
