@@ -104,7 +104,7 @@ spec:
                 fsGroup: 0  
     addons:
       codeserver:
-        # -- Enable running a code-server container in the pod
+        # Enable running a code-server container in the pod
         enabled: true
         ingress:
           enabled: true
