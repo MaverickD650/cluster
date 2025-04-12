@@ -38,6 +38,7 @@ jobs:
             --all-namespaces
             --enable-helm
             --verbose
+            --sources flux-system
 
   flux-diff:
     name: Flux Diff
