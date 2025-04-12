@@ -41,7 +41,7 @@ jobs:
             --path ./clusters/main/kubernetes
             --enable-helm
             --verbose
-            --sources "flux-system, cluster=./repositories"
+            --sources "cluster=./repositories"
   flux-diff:
     name: Flux Diff
     runs-on: ubuntu-latest
