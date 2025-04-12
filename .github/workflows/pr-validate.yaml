@@ -27,13 +27,6 @@ jobs:
   test:
     name: Flux Local - Test
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        cluster_path:
-          - clusters/main/kubernetes
-        resources:
-          - helmrelease
-          - kustomization
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -75,13 +68,14 @@ jobs:
           args: >-
             diff ${{ matrix.resources }}
             --unified 6
-            --path /github/workspace/pull/clusters/main
-            --path-orig /github/workspace/default/clusters/main
+            --path /github/workspace/pull/
+            --path-orig /github/workspace/default/
             --strip-attrs "helm.sh/chart,checksum/config,app.kubernetes.io/version,chart"
             --limit-bytes 10000
             --all-namespaces
             --sources "cluster"
             --output-file diff.patch
+            --ignore-path .github
       - name: Generate Diff
         id: diff
         run: |
@@ -89,14 +83,22 @@ jobs:
           echo "diff<<EOF" >> $GITHUB_OUTPUT
           cat diff.patch >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-      - if: ${{ steps.diff.outputs.diff != '' }}
+      - name: Filter Diff Output
+        id: filtered-diff
+        run: |
+          grep -vE '^\+\+\+ b/\.github/|^\-\-\- a/\.github/' diff.patch > filtered.patch || true
+          echo "diff<<EOF" >> $GITHUB_OUTPUT
+          cat filtered.patch >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - if: ${{ steps.filetered-diff.outputs.diff != '' }}
         name: Generate Token
         uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5 # v2.0.2
         id: app-token
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
-      - if: ${{ steps.diff.outputs.diff != '' }}
+      - if: ${{ steps.filtered-diff.outputs.diff != '' }}
         name: Add Comment
         uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
         with:
@@ -104,7 +106,7 @@ jobs:
           header: ${{ github.event.pull_request.number }}/kubernetes/${{ matrix.resource }}
           message: |
             ```diff
-            ${{ steps.diff.outputs.diff }}
+            ${{ steps.filtered-diff.outputs.diff }}
             ```
   automerge-and-approve:
     needs:
