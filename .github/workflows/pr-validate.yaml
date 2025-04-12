@@ -40,7 +40,7 @@ jobs:
             --all-namespaces
             --enable-helm
             --verbose
-            --sources "cluster=./repositories/"
+            --sources "flux-entry-repos"
   flux-diff:
     name: Flux Diff
     runs-on: ubuntu-latest
