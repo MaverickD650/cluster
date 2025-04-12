@@ -39,7 +39,6 @@ jobs:
             test
             --all-namespaces
             --path ./clusters/main/kubernetes
-            --enable-helm
             --sources "cluster=./repositories"
   flux-diff:
     name: Flux Diff
