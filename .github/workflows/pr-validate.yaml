@@ -27,6 +27,11 @@ jobs:
   test:
     name: Flux Local - Test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        paths: 
+          - clusters/main/kubernetes
+          - repositories
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -38,8 +43,6 @@ jobs:
             --all-namespaces
             --enable-helm
             --verbose
-            --sources flux-system
-            --debug true
 
   flux-diff:
     name: Flux Diff
@@ -49,6 +52,9 @@ jobs:
       pull-requests: write
     strategy:
       matrix:
+        paths: 
+          - clusters/main/kubernetes
+          - repositories
         resources: ["helmrelease", "kustomization"]
     steps:
       - name: Checkout
@@ -66,8 +72,8 @@ jobs:
           args: >-
             diff ${{ matrix.resources }}
             --unified 6
-            --path /github/workspace/pull/
-            --path-orig /github/workspace/default/
+            --path /github/workspace/pull/${{ matrix.paths }}
+            --path-orig /github/workspace/default/${{ matrix.paths }}
             --strip-attrs "helm.sh/chart,checksum/config,app.kubernetes.io/version,chart"
             --limit-bytes 10000
             --all-namespaces
