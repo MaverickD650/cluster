@@ -40,7 +40,6 @@ jobs:
             --all-namespaces
             --path ./clusters/main/kubernetes
             --enable-helm
-            --verbose
             --sources "cluster=./repositories"
   flux-diff:
     name: Flux Diff
