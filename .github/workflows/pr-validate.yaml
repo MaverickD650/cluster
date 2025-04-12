@@ -38,6 +38,8 @@ jobs:
           args: >-
             test
             --all-namespaces
+            --enable-helm
+            --debug
   flux-diff:
     name: Flux Diff
     runs-on: ubuntu-latest
