@@ -58,10 +58,6 @@ jobs:
         with:
           ref: "${{ github.event.repository.default_branch }}"
           path: default
-      - name: Debug Kustomize grep
-        run: |
-          find pull -name '*.yaml' -exec kustomize cfg grep 'spec.sourceRef.kind=GitRepository|OCIRepository' {} \;
-
       - name: Diff Resources
         uses: docker://ghcr.io/allenporter/flux-local:v7.3.0@sha256:81870d4e24a3691e0ef9a258505100b194e550e1f8ffeb5e696fdbaab1913429
         with:
@@ -75,7 +71,6 @@ jobs:
             --all-namespaces
             --sources "cluster"
             --output-file diff.patch
-            --ignore-path .github
       - name: Generate Diff
         id: diff
         run: |
@@ -83,22 +78,16 @@ jobs:
           echo "diff<<EOF" >> $GITHUB_OUTPUT
           cat diff.patch >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-      - name: Filter Diff Output
-        id: filtered-diff
-        run: |
-          grep -vE '^\+\+\+ b/\.github/|^\-\-\- a/\.github/' diff.patch > filtered.patch || true
-          echo "diff<<EOF" >> $GITHUB_OUTPUT
-          cat filtered.patch >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
 
-      - if: ${{ steps.filetered-diff.outputs.diff != '' }}
+      - if: ${{ steps.diff.outputs.diff != '' }}
         name: Generate Token
         uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5 # v2.0.2
         id: app-token
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
-      - if: ${{ steps.filtered-diff.outputs.diff != '' }}
+
+      - if: ${{ steps.diff.outputs.diff != '' }}
         name: Add Comment
         uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
         with:
@@ -106,8 +95,9 @@ jobs:
           header: ${{ github.event.pull_request.number }}/kubernetes/${{ matrix.resource }}
           message: |
             ```diff
-            ${{ steps.filtered-diff.outputs.diff }}
+            ${{ steps.diff.outputs.diff }}
             ```
+
   automerge-and-approve:
     needs:
       - kubeconform
