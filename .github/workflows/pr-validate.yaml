@@ -39,7 +39,7 @@ jobs:
             test
             --all-namespaces
             --enable-helm
-            --h
+            --verbose
   flux-diff:
     name: Flux Diff
     runs-on: ubuntu-latest
