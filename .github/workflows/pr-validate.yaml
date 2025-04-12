@@ -38,9 +38,10 @@ jobs:
           args: >-
             test
             --all-namespaces
+            --path ./clusters/main/kubernetes
             --enable-helm
             --verbose
-            --sources "flux-entry-repos"
+            --sources "flux-system, cluster=./clusters/main/kubernetes/"
   flux-diff:
     name: Flux Diff
     runs-on: ubuntu-latest
