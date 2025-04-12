@@ -29,6 +29,8 @@ jobs:
   test:
     name: Flux Local - Test
     runs-on: ubuntu-latest
+    env:
+      S3URL: "https://dummy-url-for-ci.s3.local"
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
