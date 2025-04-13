@@ -19,11 +19,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - name: Set up Homebrew tools
+      - name: Set up Homebrew
         run: |
           export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
           echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> "$GITHUB_PATH"
-          brew install fluxcd/tap/flux kubeconform kustomize
+      - name: Setup Homebrew Tools
+        uses: tecolicom/actions-use-homebrew-tools@v1
+        with:
+          tools: fluxcd/tap/flux kubeconform kustomize
       - name: Run kubeconform
         shell: bash
         run: bash ./scripts/kubeconform.sh ${{ env.KUBERNETES_DIR }}
