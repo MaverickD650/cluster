@@ -22,6 +22,7 @@ jobs:
       - name: Set up Homebrew
         run: |
           export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> "$GITHUB_PATH"
           brew install fluxcd/tap/flux kubeconform kustomize
       - name: Run kubeconform
         shell: bash
