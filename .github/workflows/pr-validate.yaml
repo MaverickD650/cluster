@@ -24,7 +24,7 @@ jobs:
           export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
           echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> "$GITHUB_PATH"
       - name: Setup Homebrew Tools
-        uses: tecolicom/actions-use-homebrew-tools@v1
+        uses: tecolicom/actions-use-homebrew-tools@b9c066b79607fa3d71e0be05d7003bb75fd9ff34 # v1
         with:
           tools: fluxcd/tap/flux kubeconform kustomize
       - name: Run kubeconform
