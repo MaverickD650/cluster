@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Set up Homebrew
+      - name: Set up Homebrew tools
         run: |
           export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
           echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> "$GITHUB_PATH"
@@ -97,7 +97,6 @@ jobs:
             ```diff
             ${{ steps.diff.outputs.diff }}
             ```
-
   automerge-and-approve:
     needs:
       - kubeconform
