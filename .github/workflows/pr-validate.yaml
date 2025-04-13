@@ -21,8 +21,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Set up Homebrew
         run: |
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          echo "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >> $GITHUB_ENV
+          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >>"$GITHUB_PATH"
       - name: Setup Workflow Tools
         run: brew install fluxcd/tap/flux kubeconform kustomize
       - name: Run kubeconform
