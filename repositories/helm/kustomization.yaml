@@ -9,7 +9,6 @@ resources:
   - cloudnative-pg.yaml
   - csi-driver-nfs.yaml
   - descheduler.yaml
-  - intel.yaml
   - jetstack.yaml
   - kustomization.yaml
   - longhorn.yaml
@@ -18,14 +17,11 @@ resources:
   - node-feature-discovery.yaml
   - nvidia.yaml
   - openebs.yaml
-  - piraeus.yaml
   - prometheus-community.yaml
-  - spegel.yaml
   - stakater.yaml
   - truecharts.yaml
   - weave-gitops.yaml
   - grafana.yaml
-  - ingress-nginx.yaml
   - traefik.yaml
   - home-ops-mirror.yaml
 # more goes here!
