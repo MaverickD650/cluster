@@ -1,0 +1,35 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "packageRules": [
+      {
+        "matchDepNames": ["authentik"],
+        "matchDatasources": ["docker"],
+        "sourceUrl": "https://github.com/goauthentik/authentik"
+      },
+      {
+        "matchDepNames": ["blocky"],
+        "matchDatasources": ["docker"],
+        "sourceUrl": "https://github.com/0xERR0R/blocky"
+      },
+      {
+        "matchDepNames": ["cert-manager"],
+        "matchDatasources": ["docker"],
+        "sourceUrl": "https://github.com/cert-manager/cert-manager"
+      },
+      {
+        "matchDepNames": ["cloudnative-pg"],
+        "matchDatasources": ["docker"],
+        "sourceUrl": "https://github.com/cloudnative-pg/cloudnative-pg/"
+      },
+      {
+        "matchDepNames": ["freshrss"],
+        "matchDatasources": ["docker"],
+        "sourceUrl": "https://github.com/FreshRSS/FreshRSS"        
+      },
+      {
+        "matchDepNames": ["homepage"],
+        "matchDatasources": ["docker"],
+        "sourceUrl": "https://github.com/gethomepage/homepage"    
+      }
+    ]
+}
