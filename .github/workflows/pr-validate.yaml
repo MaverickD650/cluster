@@ -13,8 +13,22 @@ env:
   KUBERNETES_DIR: ./clusters/main/kubernetes
 
 jobs:
+  filter-changes:
+    name: Detect Changed Files
+    runs-on: ubuntu-latest
+    outputs:
+      changed-files: ${{ steps.changed-files.outputs.changed_files }}
+    steps:
+      - name: Detect changes in kubernetes/*
+        id: changed-files
+        uses: bjw-s-labs/action-changed-files@b1144fc772fca235a50902c7bb6cc431cc7d8e27 # v0.3.2
+        with:
+          patterns: |
+            clusters/main/kubernetes/**/*
   kubeconform:
     name: Kubeconform
+    needs: filter-changes
+    if: ${{ needs.filter-changes.outputs.changed-files != '[]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -34,6 +48,8 @@ jobs:
         run: bash ./scripts/kubeconform.sh ${{ env.KUBERNETES_DIR }}
   flux-test:
     name: Flux Local - Test
+    needs: filter-changes
+    if: ${{ needs.filter-changes.outputs.changed-files != '[]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -49,6 +65,8 @@ jobs:
             --path ./clusters/main/kubernetes
   flux-diff:
     name: Flux Diff
+    needs: filter-changes
+    if: ${{ needs.filter-changes.outputs.changed-files != '[]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
