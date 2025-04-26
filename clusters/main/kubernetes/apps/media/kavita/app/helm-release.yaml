@@ -73,5 +73,7 @@ spec:
                 fsGroup: 0
       books:
         enabled: true
-        existingClaim: library-nfs-pvc
+        type: nfs
+        path: /mnt/media/calibre
         mountPath: "/calibre"
+        server: 192.168.50.118
