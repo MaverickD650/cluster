@@ -80,17 +80,25 @@ spec:
         server: 192.168.50.118
       media:
         enabled: true
-        existingClaim: mediacol-nfs-pvc
+        type: nfs
+        path: /mnt/media/mediashare
         mountPath: "/data/media"
+        server: 192.168.50.118
       books:
         enabled: true
-        existingClaim: library-nfs-pvc
+        type: nfs
+        path: /mnt/media/calibre
         mountPath: "/data/books"
+        server: 192.168.50.118
       docsconsume:
         enabled: true
-        existingClaim: documents-consume-nfs-pvc
+        type: nfs
+        path: /mnt/media/filing/consume
         mountPath: "/data/docsc"
+        server: 192.168.50.118
       docsstore:
         enabled: true
-        existingClaim: documents-store-nfs-pvc
+        type: nfs
+        path: /mnt/media/filing/store
         mountPath: "/data/docss"
+        server: 192.186.50.118
