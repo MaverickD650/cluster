@@ -101,4 +101,4 @@ spec:
         type: nfs
         path: /mnt/media/filing/store
         mountPath: "/data/docss"
-        server: 192.186.50.118
+        server: 192.168.50.118
