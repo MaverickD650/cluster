@@ -52,12 +52,16 @@ spec:
                 schedule: "30 1 * * *"              
       media:
         enabled: true
-        existingClaim: documents-store-nfs-pvc
+        type: nfs
+        path: /mnt/media/filing/store
         mountPath: "/media"
+        server: 192.168.50.118
       consume:
         enabled: true
-        existingClaim: documents-consume-nfs-pvc
+        type: nfs
+        path: /mnt/media/filing/consume
         mountPath: "/consume"
+        server: 192.168.50.118
     workload:
       main:
         podSpec:
