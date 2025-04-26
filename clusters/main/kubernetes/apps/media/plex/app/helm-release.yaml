@@ -68,16 +68,22 @@ spec:
     persistence:
       stash1:
         enabled: true
-        existingClaim: mediacol-stash1-nfs-pvc
+        type: nfs
+        path: /mnt/media/stash/misc
         mountPath: "/data/stash1"
+        server: 192.168.50.118
       stash2:
         enabled: true
-        existingClaim: mediacol-stash2-nfs-pvc
+        type: nfs
+        path: /mnt/media/stash-rm
         mountPath: "/data/stash2"
+        server: 192.168.50.118
       media:
         enabled: true
-        existingClaim: mediacol-nfs-pvc
+        type: nfs
+        path: /mnt/media/mediashare
         mountPath: "/data/media"
+        server: 192.168.50.118
 
     addons:
       codeserver:
