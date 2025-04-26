@@ -4,9 +4,6 @@ resources:
   - namespace.yaml
   - calibre-web/ks.yaml
   - calibre2/ks.yaml
-  - documents-nfs-pvc.yaml
-  - library-nfs-pvc.yaml
-  - mediacol-nfs-pvc.yaml
   - filebrowser/ks.yaml
   - stash/ks.yaml
   - stash2/ks.yaml
