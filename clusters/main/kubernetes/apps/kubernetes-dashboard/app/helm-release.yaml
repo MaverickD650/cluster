@@ -35,3 +35,7 @@ spec:
         ports:
           main:
             port: 80
+    configmap:
+      kubernetes-dashboard-settings:
+        data:
+          settings: '{"itemsPerPage":100,"defaultNamespace":"_all"}'
