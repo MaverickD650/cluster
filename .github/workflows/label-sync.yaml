@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
   push:
     branches: ["main"]
-    paths: [".github/labels.yaml"]
+    paths: [".github/labels.json"]
 
 jobs:
   label-sync:
@@ -22,5 +22,5 @@ jobs:
       - name: Sync Labels
         uses: EndBug/label-sync@52074158190acb45f3077f9099fea818aa43f97a # v2
         with:
-          config-file: .github/labels.yaml
+          config-file: .github/labels.json
           delete-other-labels: true
