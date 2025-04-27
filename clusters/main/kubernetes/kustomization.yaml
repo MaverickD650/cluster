@@ -7,4 +7,6 @@ resources:
   - flux-entry.yaml
   - flux-system
   - kube-system
+  - media
+  - metrics
   - system
