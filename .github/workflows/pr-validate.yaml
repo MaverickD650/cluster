@@ -46,7 +46,6 @@ jobs:
           args: >-
             test
             --all-namespaces
-            --path ./clusters/main/kubernetes
   flux-diff:
     name: Flux Diff
     runs-on: ubuntu-latest
