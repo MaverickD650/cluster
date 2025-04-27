@@ -123,7 +123,7 @@ spec:
               enabled: true
               certificateIssuer: cloudflared
           hosts:
-            - host: homeedit.${DOMAIN_0}
+            - host: homeedit2.${DOMAIN_0}
               paths:
                 - path: /
                   pathType: Prefix
