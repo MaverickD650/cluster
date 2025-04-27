@@ -4,12 +4,6 @@ name: "CodeQL check"
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   schedule:
     - cron: '30 6 * * *'
 
