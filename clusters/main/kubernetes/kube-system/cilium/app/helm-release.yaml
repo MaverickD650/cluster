@@ -61,7 +61,7 @@ spec:
         enabled: true
         rollOutPods: true
     cluster:
-      name: ${CLUSTERNAME}
+      name: main
       id: 1
     autoDirectNodeRoutes: true
     bandwidthManager:
