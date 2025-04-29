@@ -46,14 +46,14 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: traefik
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.tls: 'true'
+          traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd, traefik-auth@kubernetescrd
         integrations:
           traefik:
-            enabled: true
-            entrypoints:
-            - websecure
-            middlewares:
-              - name: auth
-                namespace: traefik
+            enabled: false
           certManager:
             enabled: true
             certificateIssuer: cloudflared
