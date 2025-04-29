@@ -41,7 +41,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Substitute placeholder
-        uses: faradaytrs/substitute-secrets-action@2.3
+        uses: faradaytrs/substitute-secrets-action@8974be5ae47e1b03886cec98e5c2f00061684207 # 2.3
         with:
           input: 'clusters/main/kubernetes/**/*.yaml'
           substitutionRegex: '\$\{(\w+)\}'
