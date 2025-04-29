@@ -48,5 +48,8 @@ spec:
   chain:
     middlewares:
       - name: basic-ratelimit
+        namespace: traefik
       - name: basic-secure-headers
+        namespace: traefik
       - name: compress
+        namespace: traefik
