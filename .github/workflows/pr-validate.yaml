@@ -88,10 +88,6 @@ jobs:
           substitutionRegex: '\$\{(\w+)\}'
           substitutionData: '{"S3URL":"https://placeholder.example"}'
           throwOnDataMissing: false
-      - name: Add TrueCharts repository
-        run: |
-          helm repo add truecharts oci://tccr.io/truecharts
-          helm repo update
       - name: Diff HelmReleases
         uses: docker://ghcr.io/allenporter/flux-local:v7.4.0@sha256:b27388b65df42dd3ec4208aebd8d50ed55a2f555b6a81926849897202ffeb06c
         with:
