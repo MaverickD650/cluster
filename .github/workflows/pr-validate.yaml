@@ -89,13 +89,9 @@ jobs:
           substitutionData: '{"S3URL":"https://placeholder.example"}'
           throwOnDataMissing: false
       - name: Diff HelmReleases
-        uses: MaverickD650/custom-flux-diff@main
+        uses: ./.github/actions/helm-diff
         with:
-          max_attempts: 5
-          wait_time: 15
-          diff_args: >
-            --path /github/workspace/pull/
-            --path-orig /github/workspace/default/
+          retries: 3
       - name: Diff Kustomizations
         uses: docker://ghcr.io/allenporter/flux-local:v7.4.0@sha256:b27388b65df42dd3ec4208aebd8d50ed55a2f555b6a81926849897202ffeb06c
         with:
