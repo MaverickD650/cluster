@@ -29,7 +29,7 @@ runs:
             --limit-bytes 10000 \
             --all-namespaces \
             --sources "cluster" \
-            --output-file diff-helmrelease.patch \
+            --output-file /github/workspace/diff-helmrelease.patch \
             --api-versions=monitoring.coreos.com/v1 && break
           COUNT=$((COUNT+1))
           echo "Retry $COUNT/$RETRIES failed. Retrying in 5s..."
