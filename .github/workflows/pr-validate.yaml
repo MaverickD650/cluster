@@ -48,7 +48,7 @@ jobs:
           substitutionData: '{"S3URL":"https://placeholder.example"}'
           throwOnDataMissing: false
       - name: Run flux-local test
-        uses: docker://ghcr.io/allenporter/flux-local:v7.4.0@sha256:b27388b65df42dd3ec4208aebd8d50ed55a2f555b6a81926849897202ffeb06c
+        uses: docker://ghcr.io/allenporter/flux-local:v7.5.0@sha256:2111f5e96e65bfdb7cee71f3384cdfae0de1a6a2ce5b95d0fa6de8142c3314d1
         with:
           args: >-
             test
@@ -127,7 +127,7 @@ jobs:
           }
       - if: ${{ steps.diff.outputs.diff != '' }}
         name: Generate Token
-        uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5 # v2.0.2
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
         id: app-token
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
@@ -152,7 +152,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate Token
-        uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5 # v2.0.2
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
         id: app-token
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
