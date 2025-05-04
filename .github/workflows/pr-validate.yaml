@@ -89,7 +89,7 @@ jobs:
           substitutionData: '{"S3URL":"https://placeholder.example"}'
           throwOnDataMissing: false
       - name: Diff HelmReleases
-        uses: /pull/.github/actions/helm-diff
+        uses: ./pull/.github/actions/helm-diff
         with:
           retries: 3
       - name: Diff Kustomizations
