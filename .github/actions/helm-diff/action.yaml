@@ -19,6 +19,7 @@ runs:
         until [ $COUNT -ge $RETRIES ]
         do
           docker run --rm \
+            --user "$(id -u):$(id -g)"
             -v "${{ github.workspace }}:/github/workspace" \
             ghcr.io/allenporter/flux-local:v7.4.0@sha256:b27388b65df42dd3ec4208aebd8d50ed55a2f555b6a81926849897202ffeb06c \
             diff helmrelease \
