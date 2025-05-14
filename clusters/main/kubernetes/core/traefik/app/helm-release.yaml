@@ -30,9 +30,6 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  dependsOn:
-    - name: traefik-crds
-      namespace: system
   values:
     additionalArguments:
       - "--providers.kubernetesingress.allowexternalnameservices=true"
@@ -51,6 +48,8 @@ spec:
       spec:
         externalTrafficPolicy: Local
     logs:
+      general:
+        level: DEBUG
       access:
         enabled: true
     ingressClass:
@@ -92,14 +91,6 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
-        entryPoints: ["websecure"]
-        middlewares:
-          - name: chain-basic
-            namespace: traefik
-        tls:
-          secretName: traefik-tls-0
-          domains:
-            - main: traefik.${DOMAIN_0}
     experimental:
       fastProxy:
         enabled: true
