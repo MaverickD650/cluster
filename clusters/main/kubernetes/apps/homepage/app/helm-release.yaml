@@ -37,7 +37,7 @@ spec:
             main:
               env:
                 HOMEPAGE_ALLOWED_HOSTS: home.${DOMAIN_0}
-                LOG_LEVEL: debug
+                LOG_LEVEL: DEBUG
     credentials:
       s3:
         type: s3
