@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/core/enternal-dns/app
+  path: clusters/main/kubernetes/core/external-dns/app
   prune: true
   sourceRef:
     kind: GitRepository
