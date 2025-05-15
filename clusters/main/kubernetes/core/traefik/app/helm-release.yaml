@@ -30,6 +30,9 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  dependsOn:
+    - name: traefik-crds
+      namespace: system
   values:
     additionalArguments:
       - "--providers.kubernetesingress.allowexternalnameservices=true"
