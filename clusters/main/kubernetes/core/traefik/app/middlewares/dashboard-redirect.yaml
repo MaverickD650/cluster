@@ -7,4 +7,3 @@ spec:
   replacePathRegex:
     regex: "^/$"
     replacement: "/dashboard/"
-    permanent: true
