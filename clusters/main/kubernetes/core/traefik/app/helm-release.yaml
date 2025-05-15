@@ -103,6 +103,8 @@ spec:
         middlewares:
           - name: chain-basic
             namespace: traefik
+          - name: dashboard-redirect
+            namespace: traefik
     experimental:
       fastProxy:
         enabled: true
