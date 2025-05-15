@@ -4,7 +4,6 @@ metadata:
   name: dashboard-redirect
   namespace: traefik
 spec:
-  redirectRegex:
+  replacePathRegex:
     regex: "^/$"
     replacement: "/dashboard/"
-    permanent: true
