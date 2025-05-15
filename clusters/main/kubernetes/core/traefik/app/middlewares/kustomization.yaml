@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - auth.yaml
   - chain-basic.yaml
+  - dashboard-redirect.yaml
