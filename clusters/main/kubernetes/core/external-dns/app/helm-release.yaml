@@ -42,7 +42,7 @@ spec:
       zoneidFilters: []
       registry: "noop"
       policy: "upsert-only"  # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
-      piholeServer: "${PIIP}"
+      piholeServer: "http://${PIIP}"
       piholePassword: "${PIKEY}"
     workload:
       main:
