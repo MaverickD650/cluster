@@ -10,6 +10,7 @@ metadata:
       traefik.ingress.kubernetes.io/router.tls: "true"
       traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
 spec:
+  ingressClassName: traefik
   rules:
   - host: flux-webhook.${DOMAIN_0}
     http:
