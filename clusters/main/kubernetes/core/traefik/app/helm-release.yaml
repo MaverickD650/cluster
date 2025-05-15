@@ -138,9 +138,6 @@ spec:
                 summary: "Traefik Down"
                 description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
     ports:
-      traefik:
-        expose:
-          default: true
       web:
         redirections:
           port: websecure
