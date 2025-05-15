@@ -86,6 +86,8 @@ spec:
         namespaces: []
         publishedService:
           enabled: true
+        ingressClass: traefik
+        exposedByDefault: false
     tlsStore:
       default:
         defaultCertificate:
