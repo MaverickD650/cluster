@@ -40,6 +40,7 @@ spec:
     deployment:
       enabled: true
       replicas: 2
+      revisionHistoryLimit: 4
     dashboard:
       enabled: true
     service:
