@@ -5,14 +5,5 @@
     "automerge": false,
     "dependencyDashboardApproval": false
     },
-    "ignore": [],
-    "packageRules": [
-    {
-    "description": ["Block Cilium automerge"],
-    "matchUpdateTypes": ["patch"],
-    "dependencyDashboardApproval": false,
-    "matchPackageNames": ["cilium"],
-    "labels": ["type/patch"]
-    }
-]
+    "ignore": []
 }
