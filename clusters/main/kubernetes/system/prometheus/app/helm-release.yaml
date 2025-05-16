@@ -47,6 +47,7 @@ spec:
       enabled: true
       serviceMonitor:
         selfMonitor: true
+      revisionHistoryLimit: 4
     windowsMonitoring:
       enabled: false
     prometheus-windows-exporter:
