@@ -35,21 +35,20 @@ spec:
       passwordHash: "${WEAVEHASH}"
     ingress:
       enabled: true
-      ingressClassName: traefik
+      className: traefik
       annotations:
         cert-manager.io/cluster-issuer: cloudflared
         cert-manager.io/private-key-rotation-policy: Always
         traefik.frontend.passHostHeader: "false"
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
-      hosts:
-        - gitops.${DOMAIN_0}
+      host: gitops.${DOMAIN_0}
       paths:
         - /
       pathType: Prefix
       tls:
         - hosts:
-          - gitops.${DOMAIN_0}
+            - gitops.${DOMAIN_0}
           secretName: flux-system-weave-gitops
     networkPolicy:
       create: false
