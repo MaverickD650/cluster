@@ -37,20 +37,20 @@ spec:
       enabled: true
       ingressClassName: traefik
       annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
         cert-manager.io/cluster-issuer: cloudflared
         cert-manager.io/private-key-rotation-policy: Always
-        traefik.ingress.kubernetes.io/router.tls: 'true'
-        traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
-      tls:
-        - hosts:
-            - gitops.${DOMAIN_0}
-          secretName: flux-system-weave-gitops
+        traefik.frontend.passHostHeader: "false"
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
         - host: gitops.${DOMAIN_0}
-          paths:
-            - path: /
-              pathType: Prefix
+      paths:
+        - /
+      pathType: Prefix
+      tls:
+        - hosts:
+          - gitops.${DOMAIN_0}
+          secretName: flux-system-weave-gitops
     networkPolicy:
       create: false
     metrics:
