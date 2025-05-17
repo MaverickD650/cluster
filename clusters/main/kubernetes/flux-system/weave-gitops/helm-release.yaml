@@ -29,13 +29,13 @@ spec:
   uninstall:
     keepHistory: false
   values:
-
     adminUser:
       create: true
       username: admin
       passwordHash: "${WEAVEHASH}"
     ingress:
       enabled: true
+      ingressClassName: traefik
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         cert-manager.io/cluster-issuer: cloudflared

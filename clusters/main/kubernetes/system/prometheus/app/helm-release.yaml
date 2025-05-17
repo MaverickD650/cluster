@@ -101,6 +101,7 @@ spec:
     prometheus:
       ingress:
         enabled: true
+        ingressClassName: traefik
         annotations:
           cert-manager.io/cluster-issuer: cloudflared
           cert-manager.io/private-key-rotation-policy: Always
