@@ -43,7 +43,7 @@ spec:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
-        - host: gitops.${DOMAIN_0}
+        - gitops.${DOMAIN_0}
       paths:
         - /
       pathType: Prefix
