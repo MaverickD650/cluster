@@ -98,13 +98,13 @@ spec:
       dashboard:
         enabled: true
         entryPoints: ["websecure"]
+        annotations:
+          external-dns.alpha.kubernetes.io/target: traefik.${DOMAIN_0}
         matchRule: Host(`traefik.${DOMAIN_0}`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
         tls:
           secretName: "certificate-issuer-cloudflared-wildcard"
         middlewares:
           - name: chain-basic
-            namespace: traefik
-          - name: dashboard-redirect
             namespace: traefik
     experimental:
       fastProxy:
