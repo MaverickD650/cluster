@@ -38,6 +38,7 @@ spec:
       sources:
         - "service"
         - "ingress"
+        - "traefik-proxy"
       domainFilters: []
       zoneidFilters: []
       registry: "noop"
@@ -51,3 +52,4 @@ spec:
             main:
               env:
                 EXTERNAL_DNS_PIHOLE_API_VERSION: "6"
+                EXTERNAL_DNS_DISABLE_LEGACY: "true"
