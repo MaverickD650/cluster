@@ -42,10 +42,11 @@ spec:
         traefik.frontend.passHostHeader: "false"
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
-      host: gitops.${DOMAIN_0}
-      paths:
-        - /
-      pathType: Prefix
+      hosts:
+        - host: gitops.${DOMAIN_0}
+          paths:
+            - path: /
+              pathType: Prefix
       tls:
         - hosts:
             - gitops.${DOMAIN_0}
