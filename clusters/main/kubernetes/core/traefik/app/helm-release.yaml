@@ -99,7 +99,7 @@ spec:
         enabled: true
         entryPoints: ["websecure"]
         annotations:
-          external-dns.alpha.kubernetes.io/target: traefik.${DOMAIN_0}
+          external-dns.alpha.kubernetes.io/hostname: traefik.${DOMAIN_0}
         matchRule: Host(`traefik.${DOMAIN_0}`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
         tls:
           secretName: "certificate-issuer-cloudflared-wildcard"
