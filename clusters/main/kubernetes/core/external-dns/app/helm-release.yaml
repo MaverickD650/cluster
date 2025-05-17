@@ -52,4 +52,4 @@ spec:
             main:
               env:
                 EXTERNAL_DNS_PIHOLE_API_VERSION: "6"
-                EXTERNAL_DNS_DISABLE_LEGACY: "true"
+                EXTERNAL_DNS_TRAEFIK_DISABLE_LEGACY: "true"
