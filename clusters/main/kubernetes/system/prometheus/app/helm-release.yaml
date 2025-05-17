@@ -105,9 +105,9 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: cloudflared
           cert-manager.io/private-key-rotation-policy: Always
-          traefik.frontend.passHostHeader: "false"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           traefik.ingress.kubernetes.io/router.tls: "true"
+          traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
         hosts:
           - prom.${DOMAIN_0}
         paths:
