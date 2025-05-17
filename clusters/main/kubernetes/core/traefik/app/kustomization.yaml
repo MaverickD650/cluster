@@ -5,4 +5,5 @@ resources:
   - helm-release.yaml
   - middlewares/chain-basic.yaml
   - middlewares/auth.yaml
+  - middlewares/dashboard-redirect.yaml
   - ingressroute.yaml

@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: 72.0.1
+      version: 72.5.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -47,6 +47,7 @@ spec:
       enabled: true
       serviceMonitor:
         selfMonitor: true
+      revisionHistoryLimit: 4
     windowsMonitoring:
       enabled: false
     prometheus-windows-exporter:
@@ -100,12 +101,13 @@ spec:
     prometheus:
       ingress:
         enabled: true
+        ingressClassName: traefik
         annotations:
           cert-manager.io/cluster-issuer: cloudflared
           cert-manager.io/private-key-rotation-policy: Always
-          traefik.frontend.passHostHeader: "false"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           traefik.ingress.kubernetes.io/router.tls: "true"
+          traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
         hosts:
           - prom.${DOMAIN_0}
         paths:

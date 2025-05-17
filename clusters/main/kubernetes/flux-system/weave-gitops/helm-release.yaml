@@ -29,28 +29,28 @@ spec:
   uninstall:
     keepHistory: false
   values:
-
     adminUser:
       create: true
       username: admin
       passwordHash: "${WEAVEHASH}"
     ingress:
       enabled: true
+      className: traefik
       annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
         cert-manager.io/cluster-issuer: cloudflared
         cert-manager.io/private-key-rotation-policy: Always
-        traefik.ingress.kubernetes.io/router.tls: 'true'
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
         traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
-      tls:
-        - hosts:
-            - gitops.${DOMAIN_0}
-          secretName: flux-system-weave-gitops
       hosts:
         - host: gitops.${DOMAIN_0}
           paths:
             - path: /
               pathType: Prefix
+      tls:
+        - hosts:
+            - gitops.${DOMAIN_0}
+          secretName: flux-system-weave-gitops
     networkPolicy:
       create: false
     metrics:

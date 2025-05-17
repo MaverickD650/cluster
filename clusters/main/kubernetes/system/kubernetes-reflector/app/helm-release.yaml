@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: kubernetes-reflector
-      version: 6.5.1
+      version: 6.5.3
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -29,3 +29,4 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  values: {}
