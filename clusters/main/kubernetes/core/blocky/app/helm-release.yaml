@@ -63,38 +63,6 @@ spec:
           - name: tls_servername
             value: cloudflare-dns.com
 
-    rbac:
-      main:
-        # -- Enables or disables the ClusterRole and ClusterRoleBinding
-        enabled: true
-        primary: true
-        clusterWide: true
-        # -- Set Rules on the ClusterRole
-        rules:
-          - apiGroups:
-              - ""
-            resources:
-              - services
-              - namespaces
-            verbs:
-              - list
-              - watch
-          - apiGroups:
-              - extensions
-              - networking.k8s.io
-            resources:
-              - ingresses
-            verbs:
-              - list
-              - watch
-          - apiGroups:
-              - apiextensions.k8s.io
-            resources:
-              - customresourcedefinitions
-            verbs:
-              - get
-              - list
-
     configmap:
       dashboard:
         enabled: false
