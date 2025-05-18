@@ -45,11 +45,11 @@ spec:
       policy: "upsert-only"  # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
       piholeServer: "http://${PIIP}"
       piholePassword: "${PIKEY}"
+      piholeAPIVersion: "6"
     workload:
       main:
         podSpec:
           containers:
             main:
               env:
-                EXTERNAL_DNS_PIHOLE_API_VERSION: "6"
                 EXTERNAL_DNS_TRAEFIK_DISABLE_LEGACY: "true"
