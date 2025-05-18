@@ -35,6 +35,25 @@ spec:
         ports:
           main:
             port: 80
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: traefik
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.tls: 'true'
+          traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
+        integrations:
+          traefik:
+            enabled: false
+          certManager:
+            enabled: true
+            certificateIssuer: cloudflared
+        hosts:
+          - host: dashboard.${DOMAIN_0}
+            paths:
+              - path: /
+                pathType: Prefix
     configmap:
       kubernetes-dashboard-settings:
         data:
