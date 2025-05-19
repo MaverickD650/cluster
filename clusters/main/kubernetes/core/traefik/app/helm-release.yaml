@@ -89,10 +89,28 @@ spec:
           enabled: true
         ingressClass: traefik
         exposedByDefault: false
+      kubernetesGateway:
+        enabled: true
     tlsStore:
       default:
         defaultCertificate:
           secretName: "certificate-issuer-cloudflared-wildcard"
+
+    gateway:
+      enabled: true
+      name: "traefik"
+      listeners:
+        web:
+          namespacePolicy: all
+        websecure:
+          port: 8443
+          hostname: "*.${DOMAIN_0}"
+          namespacePolicy: all
+          certificateRefs:
+            - name: certificate-issuer-cloudflared-wildcard
+              kind: Secret
+              group: ""
+          mode: Terminate
 
     ingressRoute:
       dashboard:
