@@ -101,11 +101,12 @@ spec:
       name: "traefik"
       listeners:
         web:
-          namespacePolicy: all
+          namespacePolicy: All
         websecure:
           port: 8443
           hostname: "*.${DOMAIN_0}"
-          namespacePolicy: all
+          protocol: HTTPS
+          namespacePolicy: All
           certificateRefs:
             - name: certificate-issuer-cloudflared-wildcard
               kind: Secret
