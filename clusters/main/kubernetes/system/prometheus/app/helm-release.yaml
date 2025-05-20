@@ -69,16 +69,9 @@ spec:
       fullnameOverride: kube-state-metrics
       metricRelabelings:
         - sourceLabels: [__name__]
-          regex: 'container_.*|process_.*|go_.*|kubelet_volume_stats_.*|kube_pod_container_.*|kube_pod_status_.*_reason'
+          regex: 'go_.*|process_.*'
           action: drop
-        - sourceLabels: [id]
-          action: drop
-        - sourceLabels: [container]
-          action: drop
-      metricLabelsAllowlist:
-        - pods=[app, name, namespace]
-        - deployments=[app, name, namespace]
-        - persistentvolumeclaims=[app, name, namespace]
+
       prometheus:
         monitor:
           enabled: true
