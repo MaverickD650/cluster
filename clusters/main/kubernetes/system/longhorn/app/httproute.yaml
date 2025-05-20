@@ -4,6 +4,8 @@ kind: HTTPRoute
 metadata:
   name: longhorn
   namespace: longhorn-system
+  annotations:
+    traefik.io/router.middlewares: traefik-chain-basic@kubernetescrd
 spec:
   parentRefs:
     - name: traefik
@@ -24,9 +26,3 @@ spec:
           namespace: longhorn-system
           port: 80
 
-      filters:
-        - type: ExtensionRef
-          ExtensionRef:
-            group: traefik.io
-            kind: Middleware
-            name: chain-basic
