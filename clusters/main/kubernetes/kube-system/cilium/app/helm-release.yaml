@@ -41,11 +41,8 @@ spec:
       metrics:
         enabled:
           - dns:query
-          - drop
           - tcp
           - flow
-          - port-distribution
-          - icmp
           - http
         serviceMonitor:
           enabled: true
