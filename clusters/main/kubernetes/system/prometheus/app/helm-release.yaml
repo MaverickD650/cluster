@@ -66,6 +66,18 @@ spec:
               sourceLabels: ["__meta_kubernetes_pod_node_name"]
               targetLabel: kubernetes_node
           metricRelabelings:
+            - sourceLabels: [__name__]
+              regex: "node_mountstats_nfs.*"
+              action: drop
+            - sourceLabels: [__name__]
+              regex: "node_nf_conntrack.*"
+              action: drop
+            - sourceLabels: [__name__]
+              regex: "node_sockstat.*"
+              action: drop
+            - sourceLabels: [__name__]
+              regex: "node_timex.*"
+              action: drop
             - source_labels: [__name__]
               regex: >-
                 node_load1|
