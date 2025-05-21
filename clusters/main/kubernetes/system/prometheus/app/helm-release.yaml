@@ -65,6 +65,23 @@ spec:
               replacement: $1
               sourceLabels: ["__meta_kubernetes_pod_node_name"]
               targetLabel: kubernetes_node
+          metricRelabelings:
+            - source_labels: [__name__]
+              regex: >-
+                node_load1|
+                node_load5|
+                node_load15|
+                node_cpu_seconds_total|
+                node_memory_MemAvailable_bytes|
+                node_memory_MemTotal_bytes|
+                node_filesystem_avail_bytes|
+                node_filesystem_size_bytes|
+                node_filesystem_usage_bytes|
+                node_network_receive_bytes_total|
+                node_network_transmit_bytes_total|
+                node_disk_read_bytes_total|
+                node_disk_written_bytes_total
+              action: keep
     kube-state-metrics:
       fullnameOverride: kube-state-metrics
       metricRelabelings:
