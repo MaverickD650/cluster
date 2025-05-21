@@ -106,6 +106,12 @@ spec:
         job: node-exporter
       prometheus:
         monitor:
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels: ["__meta_kubernetes_pod_node_name"]
+              targetLabel: kubernetes_node
           metricRelabelings:
           # we are not debugging go services
           - sourceLabels: [__name__]
@@ -333,6 +339,9 @@ spec:
             action: drop
             regex: 'container_(memory_failures|last_seen|memory_kernel|memory_failcnt|blkio_device|oom_events|start_time|threads|ulimits_soft).*'
           metricRelabelings:
+          - action: replace
+            sourceLabels: [node]
+            targetLabel: instance
           # Drop almost all kubelet metrics, only want cpu/memory usage
           - sourceLabels: [__name__]
             regex: '(apiserver_|etcd_|workqueue_|kubernetes_feature_|endpoint_slice_|node_authorizer_|storage_|kubeproxy_|aggregator_|authentication_|scheduler_|apiextensions_|rest_client_).*'
