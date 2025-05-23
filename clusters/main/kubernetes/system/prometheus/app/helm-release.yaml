@@ -38,44 +38,44 @@ spec:
       upgradeJob:
         enabled: true
         forceConflicts: true
-      defaultRules:
-        create: true
-        rules:
-          alertmanager: false # unlikely errors in 1 replica setup
-          etcd: false
-          general: false # no watchdog/scrape failure IDEALLY SET THIS UP
-          k8s: true
-          k8sContainerMemorySwap: false # dropped container_memory_swap
-          k8sContainerMemoryCache: true # used in node compute dashboard
-          k8sPodOwner: true # used in good dashboards
-          kubeApiserver: false
-          kubeApiserverAvailability: false
-          kubeApiserverError: false
-          kubeApiserverSlos: false
-          kubeControllerManager: false
-          kubelet: false # dumb pleg rules
-          kubePrometheusGeneral: false # not using up1 / up0 anyway
-          kubePrometheusNodeRecording: false # for node overview dashboards
-          kubernetesApps: true
-          kubernetesResources: false # don't care about quotas atm
-          kubernetesStorage: false # pvc warnings are good, but local-provisioner do not support them yet
-          kubernetesSystem: false
-          kubeScheduler: false
-          kubeSchedulerAlerting: false
-          kubeStateMetrics: true
-          network: false # don't care bout network flaps atm
-          node: false # don't need these to visualise them - default boards are bad
-          nodeExporterAlerting: false
-          nodeExporterRecording: false
-          prometheus: true # nice safety
-          prometheusOperator: true # nice safety when not using admission webhook
-          windows: false # wat
-        disabled:
-          # some of the heavier prom alerts that we don't need
-          PrometheusNotIngestingSamples: true
-          PrometheusRemoteStorageFailures: true
-          PrometheusRemoteWriteDesiredShards: true
-          PrometheusRemoteWriteBehind: true
+    defaultRules:
+      create: true
+      rules:
+        alertmanager: false # unlikely errors in 1 replica setup
+        etcd: false
+        general: false # no watchdog/scrape failure IDEALLY SET THIS UP
+        k8s: true
+        k8sContainerMemorySwap: false # dropped container_memory_swap
+        k8sContainerMemoryCache: true # used in node compute dashboard
+        k8sPodOwner: true # used in good dashboards
+        kubeApiserver: false
+        kubeApiserverAvailability: false
+        kubeApiserverError: false
+        kubeApiserverSlos: false
+        kubeControllerManager: false
+        kubelet: false # dumb pleg rules
+        kubePrometheusGeneral: false # not using up1 / up0 anyway
+        kubePrometheusNodeRecording: false # for node overview dashboards
+        kubernetesApps: true
+        kubernetesResources: false # don't care about quotas atm
+        kubernetesStorage: false # pvc warnings are good, but local-provisioner do not support them yet
+        kubernetesSystem: false
+        kubeScheduler: false
+        kubeSchedulerAlerting: false
+        kubeStateMetrics: true
+        network: false # don't care bout network flaps atm
+        node: false # don't need these to visualise them - default boards are bad
+        nodeExporterAlerting: false
+        nodeExporterRecording: false
+        prometheus: true # nice safety
+        prometheusOperator: true # nice safety when not using admission webhook
+        windows: false # wat
+      disabled:
+        # some of the heavier prom alerts that we don't need
+        PrometheusNotIngestingSamples: true
+        PrometheusRemoteStorageFailures: true
+        PrometheusRemoteWriteDesiredShards: true
+        PrometheusRemoteWriteBehind: true
     cleanPrometheusOperatorObjectNames: true
     prometheusOperator:
       enabled: true
@@ -113,26 +113,26 @@ spec:
               sourceLabels: ["__meta_kubernetes_pod_node_name"]
               targetLabel: kubernetes_node
           metricRelabelings:
-          # we are not debugging go services
-          - sourceLabels: [__name__]
-            regex: '^go_.*'
-            action: drop
-          # drop some we don't use / need
-          - sourceLabels: [__name__]
-            regex: '^node_cpu_guest_seconds_total'
-            action: drop
-          - sourceLabels: [__name__]
-            regex: '^node_network_(flags|device_id|dormant|iface_link_mode|transmit_queue_length|carrier.*)'
-            action: drop
-          - sourceLabels: [__name__]
-            regex: '^node_scrape_(collector_duration_seconds)'
-            action: drop
-          - sourceLabels: [__name__]
-            regex: '^node_filesystem_(readonly|device_error|files).*'
-            action: drop
-          - sourceLabels: [__name__]
-            regex: '^node_(cooling|schedstat|cpu_scaling).*'
-            action: drop
+            # we are not debugging go services
+            - sourceLabels: [__name__]
+              regex: '^go_.*'
+              action: drop
+            # drop some we don't use / need
+            - sourceLabels: [__name__]
+              regex: '^node_cpu_guest_seconds_total'
+              action: drop
+            - sourceLabels: [__name__]
+              regex: '^node_network_(flags|device_id|dormant|iface_link_mode|transmit_queue_length|carrier.*)'
+              action: drop
+            - sourceLabels: [__name__]
+              regex: '^node_scrape_(collector_duration_seconds)'
+              action: drop
+            - sourceLabels: [__name__]
+              regex: '^node_filesystem_(readonly|device_error|files).*'
+              action: drop
+            - sourceLabels: [__name__]
+              regex: '^node_(cooling|schedstat|cpu_scaling).*'
+              action: drop
   ## Configuration for kube-state-metrics subchart
     kube-state-metrics:
       #extraArgs: ["-v"]
@@ -372,6 +372,10 @@ spec:
           component: kube-apiserver # etcd runs on control plane nodes
     kubeProxy:
       enabled: false
+    kubeScheduler:
+      enabled: false
+    kubeControllerManager:
+      enabled: false
     prometheus:
       ingress:
         enabled: true
@@ -428,3 +432,5 @@ spec:
             cpu: 100m
           limits:
             memory: 2000Mi
+    serviceMonitor:
+      enabled: false
