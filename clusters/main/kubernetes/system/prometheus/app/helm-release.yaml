@@ -100,6 +100,12 @@ spec:
       prometheus:
         monitor:
           enabled: false
+    nodeExporter:
+      enabled: false
+      jobLabel: job
+      operatingSystems:
+        darwin:
+          false
     prometheus-node-exporter:
       fullnameOverride: node-exporter
       podLabels:
