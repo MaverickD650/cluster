@@ -294,76 +294,76 @@ spec:
         httpMethod: "POST"
         scrapeInterval: "30s"
         uid: "prometheus"
-      kubelet:
-        enabled: true
-        serviceMonitor:
-          # we want cadvisor (cpu/memory) metrics only
-          probes: false
-          cAdvisor: true
-          cAdvisorMetricRelabelings:
-          - sourceLabels: [__name__]
-            action: drop
-            regex: scheduler_.*
-          - sourceLabels: [__name__]
-            action: drop
-            regex: apiserver_.*
-          # Default drops from KPS
-          # Drop less useful container CPU metrics.
-          - sourceLabels: [__name__]
-            action: drop
-            regex: 'container_cpu_(cfs_throttled_seconds_total|load_average_10s|system_seconds_total|user_seconds_total)'
-          # Drop less useful container / always zero filesystem metrics.
-          - sourceLabels: [__name__]
-            action: drop
-            regex: 'container_fs_(io_current|io_time_seconds_total|io_time_weighted_seconds_total|reads_merged_total|sector_reads_total|sector_writes_total|writes_merged_total)'
-          # Drop less useful / always zero container memory metrics.
-          - sourceLabels: [__name__]
-            action: drop
-            regex: 'container_memory_(mapped_file|swap)'
-          # Drop less useful container process metrics.
-          - sourceLabels: [__name__]
-            action: drop
-            regex: 'container_(file_descriptors|tasks_state|threads_max)' # could drop _sockets and _processes here but it's interesting
-          # Drop container spec metrics that overlap with kube-state-metrics.
-          - sourceLabels: [__name__]
-            action: drop
-            regex: 'container_spec.*'
-          # Drop cgroup metrics with no pod.
-          - sourceLabels: [id, pod]
-            action: drop
-            regex: '.+;'
-          # END DEFAULT DROPS
-          # Extra drops
-          # Drop less useful container metrics.
-          - sourceLabels: [__name__]
-            action: drop
-            regex: 'container_(memory_failures|last_seen|memory_kernel|memory_failcnt|blkio_device|oom_events|start_time|threads|ulimits_soft).*'
-          metricRelabelings:
-          - action: replace
-            sourceLabels: [node]
-            targetLabel: instance
-          # Drop almost all kubelet metrics, only want cpu/memory usage
-          - sourceLabels: [__name__]
-            regex: '(apiserver_|etcd_|workqueue_|kubernetes_feature_|endpoint_slice_|node_authorizer_|storage_|kubeproxy_|aggregator_|authentication_|scheduler_|apiextensions_|rest_client_).*'
-            action: drop
-          # more metrics from kubelet
-          - sourceLabels: [__name__]
-            regex: '(job_controller_|cronjob_controller_|authorization_|field_validation_).*'
-            action: drop
-          # Drop kubelet_ metrics except kubelet_volume containing usage data for PVCs
-          - sourceLabels: [__name__]
-            action: drop
-            regex: '(kubelet_runtime_|kubelet_http_|kubelet_pod_|kube_router|kubelet_evented_|kubelet_topology_|kubelet_pleg_|kubelet_node_startup_).*'
-          - sourceLabels: [__name__]
-            action: drop
-            regex: '^go_.*'
-          # DROP ALL BUCKETS (not used in anything except kubelet dashboard)
-          - sourceLabels: [__name__]
-            regex: '.*bucket.*'
-            action: drop
-          - sourceLabels: [__name__]
-            regex: '(watch_cache_capacity|volume_operation_).*'
-            action: drop
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        # we want cadvisor (cpu/memory) metrics only
+        probes: false
+        cAdvisor: true
+        cAdvisorMetricRelabelings:
+        - sourceLabels: [__name__]
+          action: drop
+          regex: scheduler_.*
+        - sourceLabels: [__name__]
+          action: drop
+          regex: apiserver_.*
+        # Default drops from KPS
+        # Drop less useful container CPU metrics.
+        - sourceLabels: [__name__]
+          action: drop
+          regex: 'container_cpu_(cfs_throttled_seconds_total|load_average_10s|system_seconds_total|user_seconds_total)'
+        # Drop less useful container / always zero filesystem metrics.
+        - sourceLabels: [__name__]
+          action: drop
+          regex: 'container_fs_(io_current|io_time_seconds_total|io_time_weighted_seconds_total|reads_merged_total|sector_reads_total|sector_writes_total|writes_merged_total)'
+        # Drop less useful / always zero container memory metrics.
+        - sourceLabels: [__name__]
+          action: drop
+          regex: 'container_memory_(mapped_file|swap)'
+        # Drop less useful container process metrics.
+        - sourceLabels: [__name__]
+          action: drop
+          regex: 'container_(file_descriptors|tasks_state|threads_max)' # could drop _sockets and _processes here but it's interesting
+        # Drop container spec metrics that overlap with kube-state-metrics.
+        - sourceLabels: [__name__]
+          action: drop
+          regex: 'container_spec.*'
+        # Drop cgroup metrics with no pod.
+        - sourceLabels: [id, pod]
+          action: drop
+          regex: '.+;'
+        # END DEFAULT DROPS
+        # Extra drops
+        # Drop less useful container metrics.
+        - sourceLabels: [__name__]
+          action: drop
+          regex: 'container_(memory_failures|last_seen|memory_kernel|memory_failcnt|blkio_device|oom_events|start_time|threads|ulimits_soft).*'
+        metricRelabelings:
+        - action: replace
+          sourceLabels: [node]
+          targetLabel: instance
+        # Drop almost all kubelet metrics, only want cpu/memory usage
+        - sourceLabels: [__name__]
+          regex: '(apiserver_|etcd_|workqueue_|kubernetes_feature_|endpoint_slice_|node_authorizer_|storage_|kubeproxy_|aggregator_|authentication_|scheduler_|apiextensions_|rest_client_).*'
+          action: drop
+        # more metrics from kubelet
+        - sourceLabels: [__name__]
+          regex: '(job_controller_|cronjob_controller_|authorization_|field_validation_).*'
+          action: drop
+        # Drop kubelet_ metrics except kubelet_volume containing usage data for PVCs
+        - sourceLabels: [__name__]
+          action: drop
+          regex: '(kubelet_runtime_|kubelet_http_|kubelet_pod_|kube_router|kubelet_evented_|kubelet_topology_|kubelet_pleg_|kubelet_node_startup_).*'
+        - sourceLabels: [__name__]
+          action: drop
+          regex: '^go_.*'
+        # DROP ALL BUCKETS (not used in anything except kubelet dashboard)
+        - sourceLabels: [__name__]
+          regex: '.*bucket.*'
+          action: drop
+        - sourceLabels: [__name__]
+          regex: '(watch_cache_capacity|volume_operation_).*'
+          action: drop
     kubeDns:
       enabled: false
     kubeEtcd:
