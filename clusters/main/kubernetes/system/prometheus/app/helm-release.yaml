@@ -101,7 +101,7 @@ spec:
         monitor:
           enabled: false
     nodeExporter:
-      enabled: false
+      enabled: true
       jobLabel: job
       operatingSystems:
         darwin:
