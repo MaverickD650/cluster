@@ -141,6 +141,12 @@ spec:
               regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
               replacement: $1
               action: drop
+            - action: drop
+              regex: '^go_.*'
+              sourceLabels: [__name__]
+            - action: drop
+              regex: 'traefik_service_request_duration_seconds_bucket|traefik_entrypoint_request_duration_seconds_bucket'
+              sourceLabels: [__name__]
           relabelings:
             - sourceLabels: [__meta_kubernetes_pod_node_name]
               separator: ;
