@@ -342,9 +342,8 @@ spec:
         - sourceLabels: [id, pod]
           action: drop
           regex: '.+;'
-        - sourceLabels: [__name__]
+        - regex: 'interface|container'
           action: labeldrop
-          regex: 'interface|container'
         # END DEFAULT DROPS
         # Extra drops
         # Drop less useful container metrics.
