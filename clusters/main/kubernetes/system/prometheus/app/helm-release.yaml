@@ -302,6 +302,8 @@ spec:
         uid: "prometheus"
     kubeApiserver:
       enabled: false
+      serviceMonitor:
+        enabled: false
     kubelet:
       enabled: true
       serviceMonitor:
