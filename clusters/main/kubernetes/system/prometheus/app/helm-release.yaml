@@ -300,7 +300,7 @@ spec:
         httpMethod: "POST"
         scrapeInterval: "30s"
         uid: "prometheus"
-    kubeApiserver:
+    kubeApiServer:
       enabled: false
       serviceMonitor:
         enabled: false
