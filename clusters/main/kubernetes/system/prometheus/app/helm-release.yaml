@@ -380,6 +380,8 @@ spec:
         - sourceLabels: [__name__]
           regex: '(watch_cache_capacity|volume_operation_).*'
           action: drop
+    coreDns:
+      enabled: false
     kubeDns:
       enabled: false
     kubeEtcd:
