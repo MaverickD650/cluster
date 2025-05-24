@@ -38,16 +38,6 @@ spec:
       hostNamespaceOnly: true
     hubble:
       enabled: true
-      metrics:
-        enabled:
-          - dns:query
-          - tcp
-          - flow
-          - http
-        serviceMonitor:
-          enabled: true
-        dashboards:
-          enabled: true
       relay:
         enabled: true
         rollOutPods: true
