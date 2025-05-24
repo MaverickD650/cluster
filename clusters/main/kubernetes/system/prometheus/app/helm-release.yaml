@@ -422,6 +422,7 @@ spec:
           regex: '^go_.*'
       portName: main
       prometheusSpec:
+        enableAPIServer: false
         serviceMonitorSelectorNilUsesHelmValues: false
         scrapeConfigSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
