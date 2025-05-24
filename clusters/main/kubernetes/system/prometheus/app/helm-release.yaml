@@ -342,6 +342,12 @@ spec:
         - sourceLabels: [id, pod]
           action: drop
           regex: '.+;'
+        # Drop container_network_... metrics that match various interfaces that
+        # correspond to CNI and similar interfaces. This avoids capturing network
+        # metrics for host network containers.
+        - sourceLabels: [__name__, interface]
+          action: drop
+          regex: 'container_network_.*;(cali|cilium|cni|lxc|nodelocaldns|tunl).*'
         # END DEFAULT DROPS
         # Extra drops
         # Drop less useful container metrics.
