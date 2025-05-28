@@ -4,11 +4,11 @@ metadata:
   name: webhook-receiver
   namespace: flux-system
   annotations:
-      cert-manager.io/cluster-issuer: cloudflared
-      cert-manager.io/private-key-rotation-policy: Always
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.tls: "true"
-      traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
+    cert-manager.io/cluster-issuer: cloudflared
+    cert-manager.io/private-key-rotation-policy: Always
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-chain-basic@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
