@@ -30,6 +30,10 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: ${UIIP}
     credentials:
       s3:
         type: s3
@@ -95,4 +99,4 @@ spec:
               moverSecurityContext:
                 runAsUser: 0
                 runAsGroup: 0
-                fsGroup: 0              
+                fsGroup: 0
