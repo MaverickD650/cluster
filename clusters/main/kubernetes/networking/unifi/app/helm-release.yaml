@@ -31,7 +31,7 @@ spec:
     keepHistory: false
   values:
     service:
-      main:
+      comm:
         type: LoadBalancer
         loadBalancerIP: ${UIIP}
     credentials:
