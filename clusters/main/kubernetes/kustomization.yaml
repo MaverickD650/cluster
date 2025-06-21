@@ -9,5 +9,4 @@ resources:
   - kube-system
   - media
   - metrics
-  - networking
   - system
