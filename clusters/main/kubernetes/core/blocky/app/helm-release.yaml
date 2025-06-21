@@ -114,8 +114,3 @@ spec:
     configmap:
       dashboard:
         enabled: false
-
-    cnpg:
-      main:
-        cluster:
-          singleNode: true
