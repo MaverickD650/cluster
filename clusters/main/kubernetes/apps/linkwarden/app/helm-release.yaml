@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: linkwarden
-      version: 6.11.2
+      version: 7.0.3
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -81,8 +81,6 @@ spec:
                 fsGroup: 0    
     cnpg:
       main:
-        annotations:
-          cnpg.io/skipEmptyWalArchiveCheck: "enabled"
         mode: recovery
         cluster:
           singleNode: true
