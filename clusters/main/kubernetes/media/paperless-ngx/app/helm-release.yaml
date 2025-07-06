@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: paperless-ngx
-      version: 10.2.1
+      version: 11.0.3
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -98,8 +98,6 @@ spec:
                 pathType: Prefix
     cnpg:
       main:
-        annotations:
-          cnpg.io/skipEmptyWalArchiveCheck: "enabled"
         mode: recovery
         cluster:
           singleNode: true
