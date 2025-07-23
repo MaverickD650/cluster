@@ -73,7 +73,7 @@ spec:
         cluster:
           singleNode: true      
         backups:
-          enabled: true
+          enabled: false
           credentials: s3
         recovery:
           method: object_store
