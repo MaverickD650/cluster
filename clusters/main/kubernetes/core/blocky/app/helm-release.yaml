@@ -122,3 +122,5 @@ spec:
       main:
         cluster:
           singleNode: true
+        backups:
+          enabled: false
