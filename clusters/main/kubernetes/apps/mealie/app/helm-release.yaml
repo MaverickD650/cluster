@@ -74,6 +74,7 @@ spec:
           singleNode: true      
         backups:
           enabled: true
+          retentionPolicy: "7d"
           credentials: s3
         recovery:
           method: object_store
