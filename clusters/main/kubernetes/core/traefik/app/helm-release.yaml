@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 36.3.0
+      version: 37.0.0
       sourceRef:
         kind: HelmRepository
         name: traefik
@@ -101,12 +101,14 @@ spec:
       name: "traefik"
       listeners:
         web:
-          namespacePolicy: All
+          namespacePolicy: 
+            from: All
         websecure:
           port: 8443
           hostname: "*.${DOMAIN_0}"
           protocol: HTTPS
-          namespacePolicy: All
+          namespacePolicy: 
+            from: All
           certificateRefs:
             - name: certificate-issuer-cloudflared-wildcard
               kind: Secret
