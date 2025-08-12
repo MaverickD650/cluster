@@ -37,7 +37,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
       - name: Substitute placeholder
-        uses: faradaytrs/substitute-secrets-action@8974be5ae47e1b03886cec98e5c2f00061684207 # 2.3
+        uses: faradaytrs/substitute-secrets-action@26e9dfb248ba425dcb806a0f54e274ef7e8448f7 # 2.4
         with:
           input: 'clusters/main/kubernetes/**/*.yaml'
           substitutionRegex: '\$\{(\w+)\}'
@@ -66,7 +66,7 @@ jobs:
         with:
           path: pull
       - name: Substitute placeholder
-        uses: faradaytrs/substitute-secrets-action@8974be5ae47e1b03886cec98e5c2f00061684207 # 2.3
+        uses: faradaytrs/substitute-secrets-action@26e9dfb248ba425dcb806a0f54e274ef7e8448f7 # 2.4
         with:
           input: 'pull/clusters/main/kubernetes/**/*.yaml'
           substitutionRegex: '\$\{(\w+)\}'
@@ -78,7 +78,7 @@ jobs:
           ref: "${{ github.event.repository.default_branch }}"
           path: default
       - name: Substitute placeholder
-        uses: faradaytrs/substitute-secrets-action@8974be5ae47e1b03886cec98e5c2f00061684207 # 2.3
+        uses: faradaytrs/substitute-secrets-action@26e9dfb248ba425dcb806a0f54e274ef7e8448f7 # 2.4
         with:
           input: 'default/clusters/main/kubernetes/**/*.yaml'
           substitutionRegex: '\$\{(\w+)\}'
