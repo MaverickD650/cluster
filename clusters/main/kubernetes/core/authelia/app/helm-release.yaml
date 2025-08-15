@@ -67,7 +67,7 @@ spec:
           users_filter: (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
           additional_groups_dn: ou=groups
           user: ${LLUSERDN}
-          password: ${LLDAP_PASSWORD}
+          password: ${LLUSERPASS}
       access_control:
         rules:
         - domain:
