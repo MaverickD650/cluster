@@ -128,6 +128,26 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+    gatus:
+      endpoints:
+        - name: authelia
+          group: auth
+          url: "http://authelia.authelia.svc.cluster.local:9091"
+          interval: 1m
+          conditions:
+            - "[CONNECTED] == true"
+          alerts:
+            - type: discord
+              description: "healthcheck failed"
+              send-on-resolved: true
+    configmap:
+      gatus:
+        enabled: true
+        labels:
+          gatus.io/enabled: "true"
+        data:
+          config.yaml: |
+            {{- $.Values.gatus | toYaml | nindent 2 }}
     cnpg:
       main:
         mode: recovery
