@@ -66,7 +66,7 @@ spec:
           additional_users_dn: ou=people
           users_filter: (&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))
           additional_groups_dn: ou=groups
-          user: ${LLUSERDN}
+          user: uid=${LLUSERDN},ou=people,${LLBASEDN}
           password: ${LLUSERPASS}
       access_control:
         rules:
