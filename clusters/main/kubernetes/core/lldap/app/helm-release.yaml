@@ -70,6 +70,7 @@ spec:
                 pathType: Prefix
     cnpg:
       main:
+        mode: recovery
         cluster:
           singleNode: true
         backups:
