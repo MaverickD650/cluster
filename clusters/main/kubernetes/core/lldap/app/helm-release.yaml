@@ -30,6 +30,14 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    credentials:
+      s3:
+        type: s3
+        url: "${S3URL}"
+        bucket: "${S3PREFIX}-lldap"
+        accessKey: "${S3ID}"
+        secretKey: "${S3KEY}"
+        encrKey: "${S3KEY}"
     workload:
       main:
         podSpec:
@@ -62,7 +70,29 @@ spec:
                 pathType: Prefix
     cnpg:
       main:
+        mode: recovery
         cluster:
           singleNode: true
         backups:
-          enabled: false
+          enabled: true
+          credentials: s3
+          scheduledBackups:
+            - name: daily-backup
+              schedule: "0 5 0 * * *"
+              backupOwnerReference: self
+              immediate: true
+              suspend: false
+          recovery:
+            method: object_store
+            credentials: s3
+    persistence:
+      data:
+        - name: data
+          type: restic
+          credentials: s3
+          dest:
+            enabled: true
+          src:
+            enabled: true
+            trigger:
+              schedule: "0 5 0 * * *"
