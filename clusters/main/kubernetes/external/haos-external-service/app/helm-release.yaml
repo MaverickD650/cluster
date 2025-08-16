@@ -60,3 +60,28 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+    configmap:
+      gatus:
+        enabled: true
+        labels:
+          gatus.io/enabled: "true"
+        data:
+          config.yaml: |
+            endpoints:
+              - name: Home Assistant
+                group: Infrastructure
+                url: "http://${HAOSIP}:8123"
+                interval: 1m
+                ui:
+                  hide-url: true
+                  hide-hostname: true
+                client:
+                  insecure: true
+                  ignore-redirect: false
+                  timeout: 10s
+                conditions:
+                  - "[CONNECTED] == true"
+                alerts:
+                  - type: discord
+                    description: "healthcheck failed"
+                    send-on-resolved: true
