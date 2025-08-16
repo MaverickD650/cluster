@@ -130,7 +130,7 @@ spec:
                 pathType: Prefix
     gatus:
       endpoints:
-        - name: authelia
+        - name: Authelia
           group: Auth
           url: "http://authelia.authelia.svc.cluster.local:9091"
           interval: 1m
