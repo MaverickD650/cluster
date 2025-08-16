@@ -70,7 +70,7 @@ spec:
             endpoints:
               - name: Pi Hole
                 group: Infrastructure
-                url: "https://${PIIP}:8123"
+                url: "http://${PIIP}"
                 interval: 1m
                 ui:
                   hide-url: true
