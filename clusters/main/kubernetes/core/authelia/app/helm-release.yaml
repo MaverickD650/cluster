@@ -134,6 +134,9 @@ spec:
           group: Auth
           url: "http://authelia.authelia.svc.cluster.local:9091"
           interval: 1m
+          ui:
+            hide-url: true
+            hide-hostname: true
           conditions:
             - "[CONNECTED] == true"
           alerts:
