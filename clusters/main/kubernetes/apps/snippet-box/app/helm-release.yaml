@@ -36,6 +36,9 @@ spec:
         accessKey: "${S3ID}"
         secretKey: "${S3KEY}"
         encrKey: "${S3KEY}"
+    resources:
+      requests:
+        cpu: 10m
     ingress:
       main:
         enabled: true
