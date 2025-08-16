@@ -142,9 +142,9 @@ spec:
               backupOwnerReference: self
               immediate: true
               suspend: false
-          recovery:
-            method: object_store
-            credentials: s3
+        recovery:
+          method: object_store
+          credentials: s3
     persistence:
       config:
         volsync:
