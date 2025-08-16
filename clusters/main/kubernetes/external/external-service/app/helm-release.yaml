@@ -51,6 +51,7 @@ spec:
             middlewares:
               - name: chain-basic
                 namespace: "traefik"
+                expandObjectName: false
           certManager:
             enabled: true
             certificateIssuer: cloudflared
