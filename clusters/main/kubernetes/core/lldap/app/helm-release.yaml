@@ -86,12 +86,13 @@ spec:
           credentials: s3
     persistence:
       data:
-        - name: data
-          type: restic
-          credentials: s3
-          dest:
-            enabled: true
-          src:
-            enabled: true
-            trigger:
-              schedule: "0 5 0 * * *"
+        volsync:
+          - name: data
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+            src:
+              enabled: true
+              trigger:
+                schedule: "0 5 0 * * *"
