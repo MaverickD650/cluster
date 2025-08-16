@@ -104,7 +104,7 @@ spec:
     gatus:
       endpoints:
         - name: flux-webhook
-          group: external
+          group: Infrastructure
           url: https://flux-webhook.${DOMAIN_0}
           interval: 1m
           client:
