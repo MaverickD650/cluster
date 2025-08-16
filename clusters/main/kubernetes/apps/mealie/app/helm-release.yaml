@@ -38,6 +38,16 @@ spec:
         accessKey: "${S3ID}"
         secretKey: "${S3KEY}"
         encrKey: "${S3KEY}"
+    mealie:
+      api:
+        smtp:
+          user: "${SMTP_USER}"
+          password: "${SMTP_PASSWORD}"
+          host: "${SMTP_HOST}"
+          port: 2525
+          from_name: Mealie
+          from_email: "${SMTP_EMAIL}"
+          auth_strategy: TLS
     ingress:
       main:
         enabled: true
