@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/apps/metrics/gatus/app
+  path: clusters/main/kubernetes/metrics/gatus/app
   prune: true
   sourceRef:
     kind: GitRepository
