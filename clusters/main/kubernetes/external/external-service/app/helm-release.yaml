@@ -37,8 +37,8 @@ spec:
         useSlice: false
         ports:
           main:
-            protocol: http
-            port: 81
+            protocol: https
+            port: 444
             # Target port is the port of the "external service"
             # Defaults to "port" if not set
     ingress:
