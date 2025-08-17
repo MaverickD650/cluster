@@ -32,7 +32,7 @@ spec:
     keepHistory: false
   dependsOn:
     - name: traefik-crds
-      namespace: system
+      namespace: traefik
   values:
     additionalArguments:
       - "--providers.kubernetesingress.allowexternalnameservices=true"
