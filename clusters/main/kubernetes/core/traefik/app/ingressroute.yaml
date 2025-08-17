@@ -22,7 +22,7 @@ metadata:
   namespace: traefik
 spec:
   endpoints:
-    - dnsName: traefik.g5yss.uk
+    - dnsName: traefik.${DOMAIN_0}
       recordTTL: 300
       targets:
         - ${TRAEFIK_IP}
