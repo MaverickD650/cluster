@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: filebrowser
-      version: 12.7.1
+      version: 12.7.2
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -62,6 +62,29 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+    gatus:
+      endpoints:
+        - name: Filebrowser
+          group: Media
+          url: "http://filebrowser.media.svc.cluster.local:10187"
+          interval: 1m
+          ui:
+            hide-url: true
+            hide-hostname: true
+          conditions:
+            - "[CONNECTED] == true"
+          alerts:
+            - type: discord
+              description: "healthcheck failed"
+              send-on-resolved: true
+    configmap:
+      gatus:
+        enabled: true
+        labels:
+          gatus.io/enabled: "true"
+        data:
+          config.yaml: |
+            {{- $.Values.gatus | toYaml | nindent 2 }}
     persistence:
       data:
         enabled: true
