@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: blocky
-      version: 18.7.0
+      version: 18.7.2
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -48,7 +48,7 @@ spec:
       - https://1.0.0.1/dns-query
 
     k8sgateway:
-      watchedResources: ["Ingress", "Service"]
+      watchedResources: ["Ingress", "Service", "DNSEndpoint"]
       # -- list of processed domains
       domains: 
       - domain: "${BASE_DOMAIN}"
