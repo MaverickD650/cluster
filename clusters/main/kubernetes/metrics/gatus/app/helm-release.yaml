@@ -129,6 +129,11 @@ spec:
             alerting:
               discord:
                 webhook-url: "${GATUS_DISCORD_WEBHOOK_GLOBAL}"
+                default-alert:
+                  description: "health check failed"
+                  send-on-resolved: true
+                  failure-threshold: 3
+                  success-threshold: 2
             skip-invalid-config-update: true
             metrics: true
             {{- $.Values.gatus | toYaml | nindent 2 }}
