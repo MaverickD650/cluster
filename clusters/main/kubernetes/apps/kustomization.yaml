@@ -7,4 +7,3 @@ resources:
   - linkwarden/ks.yaml
   - freshrss/ks.yaml
   - snippet-box/ks.yaml
-  - feedcord/ks.yaml
