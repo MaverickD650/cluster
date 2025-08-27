@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - kubernetes-dashboard/ks.yaml
   - mealie/ks.yaml
-  - mealie-test/ks.yaml
   - homepage/ks.yaml
   - linkwarden/ks.yaml
   - freshrss/ks.yaml
